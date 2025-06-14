@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/enterprise-architect-website/static/css/main.cba8f679.css",
+    "main.js": "/enterprise-architect-website/static/js/main.7c36b097.js",
+    "index.html": "/enterprise-architect-website/index.html",
+    "main.cba8f679.css.map": "/enterprise-architect-website/static/css/main.cba8f679.css.map",
+    "main.7c36b097.js.map": "/enterprise-architect-website/static/js/main.7c36b097.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cba8f679.css",
+    "static/js/main.7c36b097.js"
+  ]
+}
