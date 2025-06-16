@@ -1,5 +1,26 @@
 import React, { useState } from 'react';
 import { Box, Container, Typography, Button, Grid, Paper, Link, Tabs, Tab, TextField } from '@mui/material';
+import {
+  Cloud,
+  Storage,
+  Security,
+  Code,
+  Architecture,
+  Build,
+  Computer,
+  Storage as StorageIcon,
+  Security as SecurityIcon,
+  CloudQueue,
+  Code as CodeIcon,
+  Architecture as ArchitectureIcon,
+  Build as BuildIcon,
+  Computer as ComputerIcon,
+  Email,
+  School,
+  Work,
+  Star,
+  Info
+} from '@mui/icons-material';
 
 const accomplishments = [
   'Architected secure, scalable Microsoft Azure and hybrid cloud solutions for federal agencies.',
@@ -149,6 +170,17 @@ const certifications = [
   }
 ];
 
+// Define theme colors
+const themeColors = {
+  primary: '#ff6b35', // Main orange
+  primaryLight: '#ff8c61', // Lighter orange
+  primaryDark: '#e55a2b', // Darker orange
+  background: '#1a1a1a', // Darker background
+  surface: '#2a2a2a', // Slightly lighter surface
+  text: '#e0e0e0', // Light text
+  textSecondary: '#b0b0b0' // Secondary text
+};
+
 function TabPanel({ children, value, index }) {
   return (
     <div hidden={value !== index} style={{ width: '100%' }}>
@@ -180,52 +212,141 @@ export default function App() {
   };
 
   return (
-    <Box sx={{ background: '#181f2a', minHeight: '100vh' }}>
-      <Container maxWidth="xl" sx={{ pt: 6 }}>
-        <Paper elevation={6} sx={{ p: 4, mb: 4, background: '#232b39', borderRadius: 3 }}>
-          <Typography variant="h3" component="h1" gutterBottom sx={{ color: '#2e5a88', fontWeight: 700 }}>
-            Greg Snow
-          </Typography>
-          <Typography variant="h5" gutterBottom sx={{ color: '#e0e6ed' }}>
-            Enterprise IT Solution Architect | Microsoft Cloud & Server Expert
-          </Typography>
-          <Typography variant="subtitle1" gutterBottom sx={{ color: '#b0b8c1', fontStyle: 'italic', mb: 2 }}>
-            Journey of a guy looking to solve the world's workplace challenges with technology and automation
-          </Typography>
+    <Box sx={{ 
+      background: themeColors.background,
+      minHeight: '100vh',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: `
+          linear-gradient(45deg, rgba(255, 107, 53, 0.15) 25%, transparent 25%),
+          linear-gradient(-45deg, rgba(255, 107, 53, 0.15) 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, rgba(255, 107, 53, 0.15) 75%),
+          linear-gradient(-45deg, transparent 75%, rgba(255, 107, 53, 0.15) 75%)
+        `,
+        backgroundSize: '30px 30px',
+        backgroundPosition: '0 0, 0 15px, 15px -15px, -15px 0px',
+        opacity: 0.7,
+        zIndex: 0
+      }
+    }}>
+      <Container maxWidth="xl" sx={{ pt: 6, position: 'relative', zIndex: 1 }}>
+        <Paper elevation={6} sx={{ 
+          p: 4, 
+          mb: 4, 
+          background: themeColors.surface, 
+          borderRadius: 3,
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}20 0%, transparent 50%)`,
+            zIndex: 0
+          }
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, position: 'relative' }}>
+            <Architecture sx={{ fontSize: 40, color: themeColors.primary }} />
+            <Box>
+              <Typography variant="h3" component="h1" gutterBottom sx={{ color: themeColors.primary, fontWeight: 700 }}>
+                Enterprise IT Solution Architect
+              </Typography>
+              <Typography variant="h5" gutterBottom sx={{ color: themeColors.text }}>
+                Enterprise IT Solution Architect | Microsoft Cloud & Server Expert
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom sx={{ color: themeColors.textSecondary, fontStyle: 'italic', mb: 2 }}>
+                Journey of a guy looking to solve the world's workplace challenges with technology and automation
+              </Typography>
+            </Box>
+          </Box>
         </Paper>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+        <Box sx={{ 
+          borderBottom: 1, 
+          borderColor: 'divider', 
+          mb: 2,
+          position: 'relative',
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            bottom: -1,
+            left: 0,
+            right: 0,
+            height: '1px',
+            background: `linear-gradient(90deg, transparent, ${themeColors.primary}70, transparent)`
+          }
+        }}>
           <Tabs
             value={tab}
             onChange={(_, v) => setTab(v)}
             textColor="inherit"
-            TabIndicatorProps={{ style: { background: '#2e5a88' } }}
+            TabIndicatorProps={{ style: { background: themeColors.primary } }}
             variant="scrollable"
             scrollButtons="auto"
             sx={{
-              '.MuiTab-root': { color: '#b0b8c1', fontWeight: 600, fontSize: '1.1em' },
-              '.Mui-selected': { color: '#2e5a88 !important' }
+              '.MuiTab-root': { color: themeColors.textSecondary, fontWeight: 600, fontSize: '1.1em' },
+              '.Mui-selected': { color: `${themeColors.primary} !important` }
             }}
           >
-            <Tab label="Bio" />
-            <Tab label="Key Accomplishments" />
-            <Tab label="Professional Experience" />
-            <Tab label="Thought Leadership" />
-            <Tab label="Contact" />
-            <Tab label="About This Site" />
+            <Tab icon={<Info />} label="Bio" />
+            <Tab icon={<Star />} label="Key Accomplishments" />
+            <Tab icon={<Work />} label="Professional Experience" />
+            <Tab icon={<Code />} label="Thought Leadership" />
+            <Tab icon={<Email />} label="Contact" />
+            <Tab icon={<Build />} label="About This Site" />
           </Tabs>
         </Box>
         <TabPanel value={tab} index={0}>
-          <Paper elevation={2} sx={{ p: 4, background: '#232b39', borderRadius: 3 }}>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 3, lineHeight: 1.6 }}>
-              I help government agencies and enterprises modernize, secure, and optimize their IT infrastructure. With deep expertise in Microsoft Azure, Windows Server, and enterprise technology strategy, I deliver solutions that drive mission success and operational excellence.
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 3, lineHeight: 1.6 }}>
-              Mission-driven technical leader and solution architect with expertise in IT infrastructure management, engineering, and operations. Proven track record across diverse industries, including creative, legal, healthcare, and defense, managing critical business and mission systems. Skilled in designing, building, and transforming systems into modern, resilient platforms in hybrid environments.
-            </Typography>
+          <Paper elevation={2} sx={{ 
+            p: 4, 
+            background: themeColors.surface, 
+            borderRadius: 3,
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}20 0%, transparent 50%)`,
+              zIndex: 0
+            }
+          }}>
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
+              <Cloud sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
+              <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
+                I help government agencies and enterprises modernize, secure, and optimize their IT infrastructure. With deep expertise in Microsoft Azure, Windows Server, and enterprise technology strategy, I deliver solutions that drive mission success and operational excellence.
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
+              <Security sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
+              <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
+                Mission-driven technical leader and solution architect with expertise in IT infrastructure management, engineering, and operations. Proven track record across diverse industries, including creative, legal, healthcare, and defense, managing critical business and mission systems. Skilled in designing, building, and transforming systems into modern, resilient platforms in hybrid environments.
+              </Typography>
+            </Box>
             <Button
               variant="contained"
               size="large"
-              sx={{ background: '#2e5a88', color: '#fff', fontWeight: 600, mt: 2 }}
+              sx={{ 
+                background: themeColors.primary, 
+                color: '#fff', 
+                fontWeight: 600, 
+                mt: 2,
+                position: 'relative',
+                '&:hover': {
+                  background: themeColors.primaryDark
+                }
+              }}
               href="#contact"
               onClick={() => setTab(4)}
             >
@@ -234,38 +355,51 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <Paper elevation={2} sx={{ p: 4, background: '#232b39', borderRadius: 3 }}>
-            <Typography variant="h4" gutterBottom>Key Accomplishments</Typography>
+          <Paper elevation={2} sx={{ 
+            p: 4, 
+            background: themeColors.surface, 
+            borderRadius: 3,
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}20 0%, transparent 50%)`,
+              zIndex: 0
+            }
+          }}>
+            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
+              <Star sx={{ color: themeColors.primary }} />
+              Key Accomplishments
+            </Typography>
             {accomplishments.map((item, idx) => (
-              <Typography 
-                key={idx} 
-                variant="body1" 
-                sx={{ 
-                  color: '#b0b8c1', 
-                  mb: 3, 
-                  lineHeight: 1.6,
-                  '&:last-child': { mb: 0 }
-                }}
-              >
-                {item}
-              </Typography>
+              <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
+                <StorageIcon sx={{ fontSize: 20, color: themeColors.primary, mt: 0.5 }} />
+                <Typography variant="body1" sx={{ color: themeColors.text, lineHeight: 1.6 }}>
+                  {item}
+                </Typography>
+              </Box>
             ))}
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={2}>
-          <Paper elevation={2} sx={{ p: 4, background: '#232b39', borderRadius: 3 }}>
+          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>Professional Experience</Typography>
             <Grid container spacing={3}>
               {experiences.map((exp, idx) => (
                 <Grid item xs={12} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-                    <Typography variant="h6" sx={{ color: '#4da3ff', fontWeight: 600 }}>{exp.title}</Typography>
-                    <Typography variant="subtitle1" sx={{ color: '#b0b8c1' }}>{exp.company} | {exp.years}</Typography>
+                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                    <Typography variant="h6" sx={{ color: themeColors.primary, fontWeight: 600 }}>{exp.title}</Typography>
+                    <Typography variant="subtitle1" sx={{ color: themeColors.textSecondary }}>{exp.company} | {exp.years}</Typography>
                     <Typography variant="body2" sx={{ mt: 1, mb: exp.achievements ? 2 : 0 }}>{exp.description}</Typography>
                     {exp.achievements && (
                       <Box sx={{ mt: 2 }}>
                         {exp.achievements.map((achievement, idx) => (
-                          <Typography key={idx} variant="body2" sx={{ color: '#b0b8c1', ml: 2, mb: 1 }}>
+                          <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, ml: 2, mb: 1 }}>
                             • {achievement}
                           </Typography>
                         ))}
@@ -276,19 +410,19 @@ export default function App() {
               ))}
             </Grid>
             <Typography variant="h4" sx={{ mt: 4, mb: 3 }}>Education</Typography>
-            <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-              <Typography variant="h6" sx={{ color: '#4da3ff', fontWeight: 600 }}>{education.school}</Typography>
-              <Typography variant="subtitle1" sx={{ color: '#b0b8c1' }}>{education.degree} | {education.years}</Typography>
+            <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+              <Typography variant="h6" sx={{ color: themeColors.primary, fontWeight: 600 }}>{education.school}</Typography>
+              <Typography variant="subtitle1" sx={{ color: themeColors.textSecondary }}>{education.degree} | {education.years}</Typography>
               <Typography variant="body2" sx={{ mt: 1 }}>Major: {education.major}</Typography>
             </Paper>
             <Typography variant="h4" sx={{ mt: 4, mb: 3 }}>Certifications</Typography>
             <Grid container spacing={3}>
               {certifications.map((cert, idx) => (
                 <Grid item xs={12} md={6} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-                    <Typography variant="h6" sx={{ color: '#4da3ff', mb: 2 }}>{cert.category}</Typography>
+                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>{cert.category}</Typography>
                     {cert.items.map((item, idx) => (
-                      <Typography key={idx} variant="body2" sx={{ color: '#b0b8c1', mb: 1 }}>
+                      <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
                         • {item}
                       </Typography>
                     ))}
@@ -299,22 +433,22 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={3}>
-          <Paper elevation={2} sx={{ p: 4, background: '#232b39', borderRadius: 3 }}>
+          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>Thought Leadership</Typography>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 2 }}>
+            <Typography variant="body1" sx={{ color: themeColors.text, mb: 2 }}>
               I regularly share insights on enterprise technology strategy, cloud adoption, and IT modernization. My approach blends technical depth with practical business outcomes, helping organizations navigate complex digital transformations.
             </Typography>
-            <Typography variant="body2" sx={{ color: '#4da3ff' }}>
-              <Link href="https://www.linkedin.com/in/grsnow/" target="_blank" rel="noopener" sx={{ color: '#4da3ff' }}>
+            <Typography variant="body2" sx={{ color: themeColors.primary }}>
+              <Link href="#" target="_blank" rel="noopener" sx={{ color: themeColors.primary }}>
                 Connect with me on LinkedIn
               </Link>
             </Typography>
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={4}>
-          <Paper elevation={2} sx={{ p: 4, background: '#232b39', borderRadius: 3 }}>
+          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>Contact</Typography>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 3 }}>
+            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3 }}>
               Ready to modernize your IT or collaborate on enterprise solutions? Let's connect!
             </Typography>
             <form onSubmit={handleSubmit}>
@@ -329,12 +463,12 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: '#4da3ff' },
-                        '&:hover fieldset': { borderColor: '#2e5a88' },
-                        '&.Mui-focused fieldset': { borderColor: '#2e5a88' }
+                        '& fieldset': { borderColor: themeColors.primary },
+                        '&:hover fieldset': { borderColor: themeColors.primary },
+                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
-                      '& .MuiInputLabel-root': { color: '#b0b8c1' },
-                      '& .MuiInputBase-input': { color: '#e0e6ed' }
+                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
+                      '& .MuiInputBase-input': { color: themeColors.text }
                     }}
                   />
                 </Grid>
@@ -349,12 +483,12 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: '#4da3ff' },
-                        '&:hover fieldset': { borderColor: '#2e5a88' },
-                        '&.Mui-focused fieldset': { borderColor: '#2e5a88' }
+                        '& fieldset': { borderColor: themeColors.primary },
+                        '&:hover fieldset': { borderColor: themeColors.primary },
+                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
-                      '& .MuiInputLabel-root': { color: '#b0b8c1' },
-                      '& .MuiInputBase-input': { color: '#e0e6ed' }
+                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
+                      '& .MuiInputBase-input': { color: themeColors.text }
                     }}
                   />
                 </Grid>
@@ -368,12 +502,12 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: '#4da3ff' },
-                        '&:hover fieldset': { borderColor: '#2e5a88' },
-                        '&.Mui-focused fieldset': { borderColor: '#2e5a88' }
+                        '& fieldset': { borderColor: themeColors.primary },
+                        '&:hover fieldset': { borderColor: themeColors.primary },
+                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
-                      '& .MuiInputLabel-root': { color: '#b0b8c1' },
-                      '& .MuiInputBase-input': { color: '#e0e6ed' }
+                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
+                      '& .MuiInputBase-input': { color: themeColors.text }
                     }}
                   />
                 </Grid>
@@ -389,12 +523,12 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: '#4da3ff' },
-                        '&:hover fieldset': { borderColor: '#2e5a88' },
-                        '&.Mui-focused fieldset': { borderColor: '#2e5a88' }
+                        '& fieldset': { borderColor: themeColors.primary },
+                        '&:hover fieldset': { borderColor: themeColors.primary },
+                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
-                      '& .MuiInputLabel-root': { color: '#b0b8c1' },
-                      '& .MuiInputBase-input': { color: '#e0e6ed' }
+                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
+                      '& .MuiInputBase-input': { color: themeColors.text }
                     }}
                   />
                 </Grid>
@@ -404,11 +538,11 @@ export default function App() {
                     variant="contained"
                     size="large"
                     sx={{
-                      background: '#2e5a88',
+                      background: themeColors.primary,
                       color: '#fff',
                       fontWeight: 600,
                       '&:hover': {
-                        background: '#1e4a78'
+                        background: themeColors.primaryDark
                       }
                     }}
                   >
@@ -420,78 +554,78 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={5}>
-          <Paper elevation={2} sx={{ p: 4, background: '#232b39', borderRadius: 3 }}>
+          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>About This Site</Typography>
-            <Typography variant="h6" sx={{ color: '#4da3ff', mb: 2 }}>AI-Powered Development</Typography>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 3, lineHeight: 1.6 }}>
+            <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>AI-Powered Development</Typography>
+            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
               This website was built using AI-assisted development, demonstrating the power of artificial intelligence in modern web development. The entire codebase, including the design, layout, and functionality, was generated and refined through AI collaboration.
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-                  <Typography variant="h6" sx={{ color: '#4da3ff', mb: 2 }}>Frontend Framework</Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Frontend Framework</Typography>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • React 18.2.0
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Material-UI (MUI) v5.14.0
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1' }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text }}>
                     • Emotion for styled components
                   </Typography>
                 </Paper>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-                  <Typography variant="h6" sx={{ color: '#4da3ff', mb: 2 }}>Key Features</Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Key Features</Typography>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Responsive design with Material-UI Grid
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Dark theme optimized for readability
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1' }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text }}>
                     • Client-side email form integration
                   </Typography>
                 </Paper>
               </Grid>
             </Grid>
-            <Typography variant="h6" sx={{ color: '#4da3ff', mt: 4, mb: 2 }}>AI Development Process</Typography>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 3, lineHeight: 1.6 }}>
+            <Typography variant="h6" sx={{ color: themeColors.primary, mt: 4, mb: 2 }}>AI Development Process</Typography>
+            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
               The development process leveraged AI to:
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-                  <Typography variant="h6" sx={{ color: '#4da3ff', mb: 2 }}>Code Generation</Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Code Generation</Typography>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Component structure and implementation
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Styling and theme configuration
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1' }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text }}>
                     • Form handling and validation
                   </Typography>
                 </Paper>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: '#202736', color: '#e0e6ed' }}>
-                  <Typography variant="h6" sx={{ color: '#4da3ff', mb: 2 }}>Design Decisions</Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Design Decisions</Typography>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Layout and component organization
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1', mb: 1 }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
                     • Color scheme and typography
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b8c1' }}>
+                  <Typography variant="body1" sx={{ color: themeColors.text }}>
                     • User experience optimization
                   </Typography>
                 </Paper>
               </Grid>
             </Grid>
-            <Typography variant="h6" sx={{ color: '#4da3ff', mt: 4, mb: 2 }}>Development</Typography>
-            <Typography variant="body1" sx={{ color: '#b0b8c1', lineHeight: 1.6 }}>
+            <Typography variant="h6" sx={{ color: themeColors.primary, mt: 4, mb: 2 }}>Development</Typography>
+            <Typography variant="body1" sx={{ color: themeColors.text, lineHeight: 1.6 }}>
               Built using Create React App and Material-UI, this site showcases how AI can assist in creating professional, production-ready web applications. The AI-driven development process ensured consistent code quality, modern best practices, and optimal user experience.
             </Typography>
           </Paper>

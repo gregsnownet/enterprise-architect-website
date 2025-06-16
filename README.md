@@ -1,6 +1,6 @@
 # Enterprise IT Solution Architect Website
 
-A sleek, modern, and professional website for Greg Snow, Enterprise IT Solution Architect specializing in Microsoft Enterprise Cloud and Server Solutions for government clients.
+A sleek, modern, and professional website for an Enterprise IT Solution Architect specializing in Microsoft Enterprise Cloud and Server Solutions for government clients.
 
 ## Features
 - Engaging bio and professional summary
@@ -14,11 +14,11 @@ A sleek, modern, and professional website for Greg Snow, Enterprise IT Solution 
 
 1. Install dependencies:
    ```
-npm install
+   npm install
    ```
 2. Start the development server:
    ```
-npm start
+   npm start
    ```
 
 The site will be available at `http://localhost:3000`. 
