@@ -172,13 +172,13 @@ const certifications = [
 
 // Define theme colors
 const themeColors = {
-  primary: '#ff6b35', // Main orange
-  primaryLight: '#ff8c61', // Lighter orange
-  primaryDark: '#e55a2b', // Darker orange
-  background: '#1a1a1a', // Darker background
-  surface: '#2a2a2a', // Slightly lighter surface
-  text: '#e0e0e0', // Light text
-  textSecondary: '#b0b0b0' // Secondary text
+  primary: '#4a6b8a', // Main gray-blue
+  primaryLight: '#6b8baa', // Lighter gray-blue
+  primaryDark: '#2a4b6a', // Darker gray-blue
+  background: '#1e2a3a', // Dark blue-gray background
+  surface: '#2a3646', // Slightly lighter blue-gray surface
+  text: '#ffffff',
+  textSecondary: '#b0b8c4'
 };
 
 function TabPanel({ children, value, index }) {
@@ -212,9 +212,21 @@ export default function App() {
   };
 
   return (
-    <Box sx={{ 
-      background: themeColors.background,
+    <Box sx={{
       minHeight: '100vh',
+      background: themeColors.background,
+      backgroundImage: `
+        linear-gradient(0deg, ${themeColors.background} 0%, ${themeColors.background} 100%),
+        linear-gradient(90deg, ${themeColors.primary}15 1px, transparent 1px),
+        linear-gradient(0deg, ${themeColors.primary}15 1px, transparent 1px),
+        linear-gradient(45deg, ${themeColors.primary}10 25%, transparent 25%),
+        linear-gradient(-45deg, ${themeColors.primary}10 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, ${themeColors.primary}10 75%),
+        linear-gradient(-45deg, transparent 75%, ${themeColors.primary}10 75%)
+      `,
+      backgroundSize: '100% 100%, 30px 30px, 30px 30px, 60px 60px, 60px 60px, 60px 60px, 60px 60px',
+      backgroundPosition: '0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0',
+      color: themeColors.text,
       position: 'relative',
       '&::before': {
         content: '""',
@@ -223,16 +235,8 @@ export default function App() {
         left: 0,
         right: 0,
         bottom: 0,
-        background: `
-          linear-gradient(45deg, rgba(255, 107, 53, 0.15) 25%, transparent 25%),
-          linear-gradient(-45deg, rgba(255, 107, 53, 0.15) 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, rgba(255, 107, 53, 0.15) 75%),
-          linear-gradient(-45deg, transparent 75%, rgba(255, 107, 53, 0.15) 75%)
-        `,
-        backgroundSize: '30px 30px',
-        backgroundPosition: '0 0, 0 15px, 15px -15px, -15px 0px',
-        opacity: 0.7,
-        zIndex: 0
+        background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}05 0%, transparent 50%)`,
+        pointerEvents: 'none'
       }
     }}>
       <Container maxWidth="xl" sx={{ pt: 6, position: 'relative', zIndex: 1 }}>
@@ -434,15 +438,178 @@ export default function App() {
         </TabPanel>
         <TabPanel value={tab} index={3}>
           <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
-            <Typography variant="h4" gutterBottom>Thought Leadership</Typography>
-            <Typography variant="body1" sx={{ color: themeColors.text, mb: 2 }}>
+            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
+              <Code sx={{ color: themeColors.primary }} />
+              Thought Leadership
+            </Typography>
+            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
               I regularly share insights on enterprise technology strategy, cloud adoption, and IT modernization. My approach blends technical depth with practical business outcomes, helping organizations navigate complex digital transformations.
             </Typography>
-            <Typography variant="body2" sx={{ color: themeColors.primary }}>
-              <Link href="#" target="_blank" rel="noopener" sx={{ color: themeColors.primary }}>
-                Connect with me on LinkedIn
-              </Link>
-            </Typography>
+            
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={6}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Cloud sx={{ fontSize: 20 }} />
+                    AI & Enterprise Technology
+                  </Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Generative AI's transformative impact on enterprise IT operations and decision-making processes
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • AI-powered cybersecurity: Automated threat detection and response in hybrid cloud environments
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Machine learning integration strategies for legacy system modernization and optimization
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Responsible AI governance frameworks for government and enterprise compliance
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • AI-driven infrastructure automation: Reducing operational overhead while improving reliability
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Edge computing and AI: Enabling real-time decision making in distributed environments
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} md={6}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Security sx={{ fontSize: 20 }} />
+                    Cybersecurity & Geopolitics
+                  </Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Nation-state cyber threats and their impact on critical infrastructure security
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Supply chain security: Mitigating risks in global technology partnerships
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Zero Trust architecture adoption in response to evolving threat landscapes
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • International cybersecurity regulations and their enterprise implications
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Quantum computing threats to current encryption standards and mitigation strategies
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Cyber warfare and its influence on enterprise security postures
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} md={6}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Architecture sx={{ fontSize: 20 }} />
+                    Digital Transformation & Policy
+                  </Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Government digital transformation initiatives and their impact on private sector adoption
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Data sovereignty regulations and their influence on cloud architecture decisions
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Green IT initiatives: Sustainable technology practices in enterprise environments
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Digital divide: Bridging technology gaps in underserved communities and regions
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Regulatory compliance in emerging technology adoption (AI, IoT, blockchain)
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Public-private partnerships in critical infrastructure modernization
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} md={6}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Storage sx={{ fontSize: 20 }} />
+                    Cloud & Global Affairs
+                  </Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Multi-cloud strategies in response to geopolitical tensions and trade restrictions
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Cloud repatriation trends: Balancing cost, performance, and regulatory requirements
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Global data center expansion and its impact on enterprise architecture decisions
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Technology sanctions and their effect on enterprise technology roadmaps
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Edge computing adoption driven by latency requirements and local regulations
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                      • Hybrid cloud strategies for organizations operating in multiple jurisdictions
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12}>
+                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Build sx={{ fontSize: 20 }} />
+                    Emerging Technology & Society
+                  </Typography>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Workforce transformation: Upskilling strategies for AI and automation adoption
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Digital ethics: Balancing innovation with societal responsibility in enterprise AI
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Technology accessibility: Ensuring inclusive design in enterprise solutions
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Remote work evolution: Permanent changes to enterprise IT infrastructure
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Smart cities and their implications for enterprise technology integration
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Digital currency adoption and its impact on enterprise financial systems
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Technology nationalism: Impact on global supply chains and vendor selection
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • Climate tech: Enterprise solutions for environmental sustainability
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
+            
+            <Box sx={{ mt: 3, textAlign: 'center' }}>
+              <Typography variant="body2" sx={{ color: themeColors.primary }}>
+                <Link href="#" target="_blank" rel="noopener" sx={{ color: themeColors.primary }}>
+                  Connect with me on LinkedIn for deeper insights
+                </Link>
+              </Typography>
+            </Box>
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={4}>
