@@ -313,13 +313,15 @@ const professionalGoals = [
 
 // Define theme colors
 const themeColors = {
-  primary: '#4a6b8a', // Main gray-blue
-  primaryLight: '#6b8baa', // Lighter gray-blue
-  primaryDark: '#2a4b6a', // Darker gray-blue
-  background: '#1e2a3a', // Dark blue-gray background
-  surface: '#2a3646', // Slightly lighter blue-gray surface
-  text: '#ffffff',
-  textSecondary: '#b0b8c4'
+  primary: '#2563eb', // Vibrant blue
+  primaryLight: '#60a5fa', // Light blue
+  primaryDark: '#1e40af', // Deep blue
+  background: '#f8fafc', // Light gray-blue background
+  surface: '#ffffff', // White surface
+  surfaceAlt: '#f1f5f9', // Alternate light surface
+  text: '#1e293b', // Dark slate text
+  textSecondary: '#64748b', // Medium slate text
+  border: '#e2e8f0' // Light border
 };
 
 function TabPanel({ children, value, index }) {
@@ -357,47 +359,18 @@ export default function App() {
       minHeight: '100vh',
       background: themeColors.background,
       backgroundImage: `
-        linear-gradient(0deg, ${themeColors.background} 0%, ${themeColors.background} 100%),
-        linear-gradient(90deg, ${themeColors.primary}15 1px, transparent 1px),
-        linear-gradient(0deg, ${themeColors.primary}15 1px, transparent 1px),
-        linear-gradient(45deg, ${themeColors.primary}10 25%, transparent 25%),
-        linear-gradient(-45deg, ${themeColors.primary}10 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, ${themeColors.primary}10 75%),
-        linear-gradient(-45deg, transparent 75%, ${themeColors.primary}10 75%)
+        linear-gradient(135deg, ${themeColors.background} 0%, #e0f2fe 100%)
       `,
-      backgroundSize: '100% 100%, 30px 30px, 30px 30px, 60px 60px, 60px 60px, 60px 60px, 60px 60px',
-      backgroundPosition: '0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0',
       color: themeColors.text,
-      position: 'relative',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}05 0%, transparent 50%)`,
-        pointerEvents: 'none'
-      }
+      position: 'relative'
     }}>
       <Container maxWidth="xl" sx={{ pt: 6, position: 'relative', zIndex: 1 }}>
-        <Paper elevation={6} sx={{ 
-          p: 4, 
-          mb: 4, 
-          background: themeColors.surface, 
+        <Paper elevation={2} sx={{
+          p: 4,
+          mb: 4,
+          background: themeColors.surface,
           borderRadius: 3,
-          position: 'relative',
-          overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}20 0%, transparent 50%)`,
-            zIndex: 0
-          }
+          border: `1px solid ${themeColors.border}`
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, position: 'relative' }}>
             <Architecture sx={{ fontSize: 40, color: themeColors.primary }} />
@@ -414,20 +387,13 @@ export default function App() {
             </Box>
           </Box>
         </Paper>
-        <Box sx={{ 
-          borderBottom: 1, 
-          borderColor: 'divider', 
-          mb: 2,
-          position: 'relative',
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: -1,
-            left: 0,
-            right: 0,
-            height: '1px',
-            background: `linear-gradient(90deg, transparent, ${themeColors.primary}70, transparent)`
-          }
+        <Box sx={{
+          borderBottom: 1,
+          borderColor: themeColors.border,
+          mb: 3,
+          background: themeColors.surface,
+          borderRadius: 2,
+          p: 1
         }}>
           <Tabs
             value={tab}
@@ -437,8 +403,8 @@ export default function App() {
             variant="scrollable"
             scrollButtons="auto"
             sx={{
-              '.MuiTab-root': { color: themeColors.textSecondary, fontWeight: 600, fontSize: '1.1em' },
-              '.Mui-selected': { color: `${themeColors.primary} !important` }
+              '.MuiTab-root': { color: themeColors.textSecondary, fontWeight: 600, fontSize: '1em' },
+              '.Mui-selected': { color: `${themeColors.primary} !important`, bgcolor: themeColors.surfaceAlt }
             }}
           >
             <Tab icon={<Info />} label="Bio" />
@@ -452,22 +418,11 @@ export default function App() {
           </Tabs>
         </Box>
         <TabPanel value={tab} index={0}>
-          <Paper elevation={2} sx={{ 
-            p: 4, 
-            background: themeColors.surface, 
+          <Paper elevation={1} sx={{
+            p: 4,
+            background: themeColors.surface,
             borderRadius: 3,
-            position: 'relative',
-            overflow: 'hidden',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}20 0%, transparent 50%)`,
-              zIndex: 0
-            }
+            border: `1px solid ${themeColors.border}`
           }}>
             <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
               <Cloud sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
@@ -502,22 +457,11 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <Paper elevation={2} sx={{ 
-            p: 4, 
-            background: themeColors.surface, 
+          <Paper elevation={1} sx={{
+            p: 4,
+            background: themeColors.surface,
             borderRadius: 3,
-            position: 'relative',
-            overflow: 'hidden',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: `radial-gradient(circle at 50% 50%, ${themeColors.primary}20 0%, transparent 50%)`,
-              zIndex: 0
-            }
+            border: `1px solid ${themeColors.border}`
           }}>
             <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
               <Star sx={{ color: themeColors.primary }} />
@@ -534,7 +478,7 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={2}>
-          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
             <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text, mb: 3 }}>
               <Computer sx={{ color: themeColors.primary }} />
               Technical & Business Skills
@@ -544,7 +488,7 @@ export default function App() {
             <Grid container spacing={3}>
               {technicalSkills.map((skill, idx) => (
                 <Grid item xs={12} md={6} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text, height: '100%' }}>
+                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, height: '100%', border: `1px solid ${themeColors.border}` }}>
                     <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                       <Build sx={{ fontSize: 20 }} />
                       {skill.category}
@@ -563,7 +507,7 @@ export default function App() {
             <Grid container spacing={3}>
               {businessSkills.map((skill, idx) => (
                 <Grid item xs={12} md={4} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text, height: '100%' }}>
+                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, height: '100%', border: `1px solid ${themeColors.border}` }}>
                     <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                       <Star sx={{ fontSize: 20 }} />
                       {skill.category}
@@ -580,12 +524,12 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={3}>
-          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
             <Typography variant="h4" gutterBottom>Professional Experience</Typography>
             <Grid container spacing={3}>
               {experiences.map((exp, idx) => (
                 <Grid item xs={12} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, border: `1px solid ${themeColors.border}` }}>
                     <Typography variant="h6" sx={{ color: themeColors.primary, fontWeight: 600 }}>{exp.title}</Typography>
                     <Typography variant="subtitle1" sx={{ color: themeColors.textSecondary }}>{exp.company} | {exp.years}</Typography>
                     <Typography variant="body2" sx={{ mt: 1, mb: exp.achievements ? 2 : 0 }}>{exp.description}</Typography>
@@ -612,7 +556,7 @@ export default function App() {
             <Grid container spacing={3}>
               {certifications.map((cert, idx) => (
                 <Grid item xs={12} md={6} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
+                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, border: `1px solid ${themeColors.border}` }}>
                     <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>{cert.category}</Typography>
                     {cert.items.map((item, idx) => (
                       <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
@@ -626,7 +570,7 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={4}>
-          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
             <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text, mb: 3 }}>
               <ArchitectureIcon sx={{ color: themeColors.primary }} />
               Professional Goals
@@ -650,7 +594,7 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={5}>
-          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
             <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
               <Code sx={{ color: themeColors.primary }} />
               Thought Leadership
@@ -826,7 +770,7 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={6}>
-          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
             <Typography variant="h4" gutterBottom>Contact</Typography>
             <Typography variant="body1" sx={{ color: themeColors.text, mb: 3 }}>
               Ready to modernize your IT or collaborate on enterprise solutions? Let's connect!
@@ -843,12 +787,13 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.primary },
+                        '& fieldset': { borderColor: themeColors.border },
                         '&:hover fieldset': { borderColor: themeColors.primary },
                         '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
                       '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text }
+                      '& .MuiInputBase-input': { color: themeColors.text },
+                      bgcolor: themeColors.surface
                     }}
                   />
                 </Grid>
@@ -863,12 +808,13 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.primary },
+                        '& fieldset': { borderColor: themeColors.border },
                         '&:hover fieldset': { borderColor: themeColors.primary },
                         '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
                       '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text }
+                      '& .MuiInputBase-input': { color: themeColors.text },
+                      bgcolor: themeColors.surface
                     }}
                   />
                 </Grid>
@@ -882,12 +828,13 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.primary },
+                        '& fieldset': { borderColor: themeColors.border },
                         '&:hover fieldset': { borderColor: themeColors.primary },
                         '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
                       '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text }
+                      '& .MuiInputBase-input': { color: themeColors.text },
+                      bgcolor: themeColors.surface
                     }}
                   />
                 </Grid>
@@ -903,12 +850,13 @@ export default function App() {
                     onChange={handleFormChange}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.primary },
+                        '& fieldset': { borderColor: themeColors.border },
                         '&:hover fieldset': { borderColor: themeColors.primary },
                         '&.Mui-focused fieldset': { borderColor: themeColors.primary }
                       },
                       '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text }
+                      '& .MuiInputBase-input': { color: themeColors.text },
+                      bgcolor: themeColors.surface
                     }}
                   />
                 </Grid>
@@ -934,7 +882,7 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={7}>
-          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
             <Typography variant="h4" gutterBottom>About This Site</Typography>
             <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>AI-Powered Development</Typography>
             <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
