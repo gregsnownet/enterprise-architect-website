@@ -23,113 +23,132 @@ import {
 } from '@mui/icons-material';
 
 const accomplishments = [
-  'Architected secure, scalable Microsoft Azure and hybrid cloud solutions for federal agencies.',
-  'Led multi-million dollar migrations from legacy infrastructure to modern Windows Server environments.',
-  'Developed enterprise technology strategies that improved operational efficiency and compliance.',
-  'Recognized for thought leadership in cloud adoption, automation, and IT modernization.'
+  '20 years of experience architecting enterprise solutions and leading cross-functional teams in high-stakes environments',
+  'Technical Lead managing 90+ person team delivering IT solutions for OCONUS Navy Enterprise Networks',
+  'Drove digital transformation initiatives across defense, healthcare, and legal sectors',
+  'Architected secure, scalable Microsoft Azure and hybrid cloud solutions for federal agencies',
+  'Led enterprise IT modernization projects transforming legacy systems into resilient, modern platforms',
+  'Leveraged generative AI to expedite engineering solution development and delivery',
+  'Developed strategy and architecture enabling Navy M365/Azure services in OCONUS regions'
 ];
 
 const experiences = [
   {
-    title: 'Solution Architect | NEN Technical Lead',
+    title: 'Solution Architect | Technical Lead',
     company: 'Booz Allen Hamilton',
-    years: 'SEP 2019 - Present',
-    description: 'Contract Technical Lead supporting OCONUS Navy Enterprise Networks at NIWC Pacific for Booz Allen. In this role, I am responsible for managing technical delivery for a 100+ person team, ensuring consistent solution development, IT system modernization, and alignment with strategic objectives.',
+    years: 'JAN 2024 - Present',
+    description: 'Technical Lead supporting Outside of the Continental United States (OCONUS) Navy Enterprise Networks (NEN) for Booz Allen. In this role, I am responsible for managing technical delivery for a 90+ person team, ensuring consistent solution development, IT system modernization, and alignment with Navy strategic objectives.',
     achievements: [
-      'Provide technical guidance across Windows Servers solutions (AD, PKI, File, Exchange)',
-      'Perform In theater and remote installations of Domain Controller, File, Backup and SCCMCB',
-      'Lead engineering responsibilities include Exchange 2019, PKI, Active Directory, MECM',
-      'MECM infrastructure engineering support of all roles and application management',
-      'PKI solution development including certificate validation infrastructure support',
-      'Drive secure server base build development including integration, STIG and GPO engineering'
+      'Serve as Booz Allen\'s IT functional lead for recruiting IT Systems Engineers and Architects',
+      'Oversee engineering team delivery, managing technical solutions and government expectations',
+      'Leverage generative AI to expedite engineering solution development and delivery',
+      'Develop strategy and architecture to enable Navy M365/Azure services in OCONUS regions',
+      'Develop technical solution roadmaps in collaboration with government to support project scoping',
+      'Deliver regular briefings on project status to key government and contractor stakeholders',
+      'Support government leadership in technical strategy development and project prioritization',
+      'Represent OCONUS interests to Navy program office and external operations teams',
+      'Provide technical guidance to internal teams across networks and systems-based technologies',
+      'Provide career motivators, mentorship, and support to develop technical staff'
     ]
   },
   {
     title: 'Lead Engineer',
     company: 'Booz Allen Hamilton',
-    years: 'SEP 2019 – JAN 2020',
-    description: 'Team Lead for Windows Server engineers responsible for developing enterprise IT solutions to be deployed at OCONUS Naval sites. Responsibilities include technical review of engineering solutions in development, mentoring, technical capacity development, and identification of opportunities to create value for NIWC Pacific.'
+    years: 'SEP 2019 - JAN 2024',
+    description: 'Team Lead for OCONUS Windows Server Services responsible for developing enterprise IT solutions leveraging Microsoft Technologies. Responsibilities include technical review of engineering solutions in development, mentoring, technical capacity development, and identification of opportunities to create value for the Navy.',
+    achievements: [
+      'Team Lead for Windows Server, Active Directory, PKI, Exchange, and MECM functional areas',
+      'Led the development of automation to quickly deploy/redeploy Windows Server infrastructure',
+      'Performed in-theater and remote installations of multiple Windows Server-based solutions',
+      'Reviewed and developed engineering documentation to enable successful in-theater installations',
+      'Developed PKI solutions with DoD and Internal certificates for 802.1x and MFA requirements',
+      'Ensured compliance with STIG/TASKORD/OPORD mandates across Windows Server systems'
+    ]
   },
   {
     title: 'Systems Engineer III',
-    company: 'Draper',
+    company: 'Draper Laboratory',
     years: 'JUL 2017 - SEP 2019',
-    description: 'Developed secure Windows Server information systems focusing on DFARS compliance, and security posture improvements. Managed and built both classified and unclassified systems using DOD STIGs. Primarily engineer responsible for messaging, directory services, and identity management platform.',
+    description: 'Developed secure Windows Server information systems focusing on DFARS compliance, and security posture improvements. Managed and built both classified and unclassified systems using DOD STIGs. Primary engineer responsible for messaging, directory services, and identity management platform.',
     achievements: [
-      'Implement required DOD STIGs using Group Policy (GPO) to improve system security posture',
+      'Implemented required DoD STIGs using Group Policy to improve system security posture',
       'Exchange 2016 engineering, administration, support for related mail transport infrastructure',
-      'Implement MFA using smart cards on servers and endpoints for DFARS compliance',
-      'Deployed SCOM and SolarWinds to monitor infrastructure health and availability',
-      'Built custom directory service data replication',
-      'Build and deploy enterprise applications running on Windows Servers across the enterprise'
+      'Implemented Multi-Factor Authentication (MFA) using smart cards on servers and endpoints',
+      'Deployed SCOM and SolarWinds to monitor and ensure infrastructure health and availability',
+      'Built custom directory service data replication solution using Microsoft Identity Manager',
+      'Built and deployed enterprise applications running on Windows Servers across the enterprise'
     ]
   },
   {
     title: 'Senior Systems Server Engineer',
     company: 'Boston Medical Center',
     years: 'OCT 2014 – JUL 2017',
-    description: 'Responsible for the health and reliability of "Tier Zero" applications in an always on health care environment, ensuring reliability, consistency and fault tolerance across the organization. Point of contact for all Microsoft solutions including Active Directory, Active Directory Federated Services, Exchange Server, Lync, and Certificate Authority.',
+    description: 'Responsible for the health and reliability of "Tier Zero" applications in an always-on health care environment, ensuring reliability, consistency and fault tolerance across the organization. Point of contact for all Microsoft solutions including Active Directory, Active Directory Federated Services, Exchange Server, Lync Server, and Certificate Authority. In this role I deployed servers supporting a wide variety of patient-facing clinical applications.',
     achievements: [
-      'Provide EMR vendor assistance to ensure server uptime for patient critical apps',
+      'Provided EMR vendor assistance to ensure server uptime for patient critical application',
       'Drove secure baseline virtual and physical server build processes',
-      'Participated in regular on call rotation to diagnose and fix issues with patient facing systems',
-      'Deployed ADFS to create secure federated trust with cloud providers',
-      'Supported 802.1X NAC deployment using Microsoft PKI for secure network authentication',
+      'Support on-call rotation to diagnose and resolve issues with patient-facing systems',
+      'Deployed SAML solutions with Microsoft ADFS enabling federated trust with cloud providers',
+      'Developed 802.1x policy using Microsoft PKI for secure network authentication',
       'Audited and reported on stale AD objects to maintain required security compliance',
-      'Built and deployed secure desktop/server policies using GPO',
-      'Provide infrastructure support for to clinical systems analyst team',
-      'Ensure HIPPA/PCI complaint standards exercised in systems design'
+      'Built and deployed secure endpoint/server baseline policies using GPO',
+      'Ensured HIPAA and PCI compliance in IT systems design'
     ]
   },
   {
     title: 'Systems Administrator',
-    company: 'Bingham McCutchen',
+    company: 'Bingham McCutchen, LLP',
     years: 'APR 2012 – OCT 2014',
     description: 'Managed global IT infrastructure consisting of 600+ physical and virtual servers across 16 sites. Primary responsibilities including Active Directory, messaging and mobility infrastructure administration and support.',
     achievements: [
-      'Built, configured, and Managed Exchange Server 2003 - 2013 on Windows 2008 servers',
+      'Built, configured, and managed Enterprise Exchange Server 2013 on Windows servers',
       'Exchange 2013 requirements gathering, migration planning and app dependency analysis',
       'Symantec Enterprise Vault 11 design and installation then migration from Autonomy EAS',
-      'Configured and maintained enterprise message routing and send/receive to connectors',
+      'Configured enterprise message routing connectors optimizing mail flow between sites',
       'Public Folder migration consisting of 6TB content, and retiring Exchange 2003',
       'Deployed perimeter SMTP Mail Gateway deployment for protection against email-based threats',
-      'Execute Exchange Server disaster recovery planning and exercises',
-      'Mobile Device Management encompassing BES 5, IOS and Android for firm DLP initiative',
-      'Managed AD, DNS, DHCP and PKI for AD replication and security enhancements',
-      'VMware ESXI administration, storage and resource allocation, backup/recovery and VM builds'
+      'Executed Exchange Server disaster recovery planning and exercises',
+      'Developed Mobile Device Management solutions with iOS, and Android devices for DLP initiative',
+      'Managed AD, DNS, DHCP, and PKI for AD replication and security enhancements',
+      'VMware ESXI administration, storage and resource allocation, backup/recovery and VM builds',
+      'Developed group policies for Windows Server to simplify configuration management',
+      'Led Change Management board to coordinate and execute changes across the enterprise',
+      'Deployed SolarWinds and EM7 to monitor server infrastructure and increase server uptime',
+      'Planned and deployed two-tier Certificate Authority using Microsoft Certificate Services',
+      'Built and deployed new HP BL servers using HP 3PAR and NetApp backend storage',
+      'Managed and deployed data protection solution with CommVault protecting over 80 TB of data'
     ]
   },
   {
     title: 'Systems Administrator',
     company: 'SMMA, INC',
     years: 'JAN 2010 – APR 2012',
-    description: 'Responsible for all aspects of systems and networks maintenance, engineering and administration for the firm\'s IT Infrastructure. These systems supported critical network infrastructure including AD, Exchange, Checkpoint firewall and VMware.',
+    description: 'In this role, I was responsible for all aspects of systems and networks maintenance, engineering and administration for the firm\'s IT Infrastructure. These systems supported critical network infrastructure including and enabled collaboration and communication between employees and clients.',
     achievements: [
-      'Administer, support and maintained Cisco Unified Call Manager for VOIP communication',
+      'Administered, supported, and maintained Cisco Unified Call Manager infrastructure',
       'Deployed and configured VOIP phones for 180 employees in 3 offices',
-      'Administration of EMC Clarion storage including LUN allocation and MPIO configuration',
-      'Preformed VMware ESXI provisioning and P-to-V migration for reduced server footprint',
+      'Administration of EMC Clarion storage including storage allocation target configuration',
+      'Performed VMware ESXI provisioning and P-to-V migration for reduced server footprint',
       'Managed Symantec Endpoint Protection Manager supporting virus and malware protection',
-      'Designed Symantec Backup Exec 12 data protection and recovery routines',
+      'Designed Symantec Backup Exec data protection and recovery routines',
       'Migrated end user\'s mailboxes and Public Folder content to Exchange Server 2010',
       'Planned and deployed network configuration for Chapel Hill, NC office connecting a new site'
     ]
   },
   {
-    title: 'Systems Administrator',
+    title: 'Systems Analyst',
     company: 'SMMA, INC',
     years: 'AUG 2005 – JAN 2010',
-    description: 'Primary responsibilities include analysis, development and testing of technical solutions to support architects, engineers and designers. In this role, I researched and tested collaboration applications to identify methods that improved staff productivity. Internship from 2005-2007, becoming full time staff upon graduation in 2007.',
+    description: 'Primary responsibilities included analysis, development and testing of technical solutions to support architects, engineers and designers. In this role, I researched and tested collaboration applications to identify methods that improved staff productivity. Piloted and introduced server virtualization to consolidate datacenter hardware.',
     achievements: [
-      'Introduced server virtualization infrastructure for server consolidation',
-      'Performed migration to Checkpoint Secure Platform Firewall on NGX appliance',
-      'Installed site-to-site VPN using Checkpoint Firewall between remote offices',
+      'Performed migration to CheckPoint Secure Platform Firewall on NGX appliance',
+      'Installed site-to-site VPN using CheckPoint Firewall between remote offices',
       'Migrated from Exchange 2003 to 2007 and developed disaster recovery plan',
       'Introduced Barracuda SPAM firewall reducing SPAM and increasing employee productivity',
       'Selected and implemented SharePoint 2010 Server for departmental collaboration',
       'Adopted Windows Deployment services for desktop and server imaging',
       'Performed Windows Server troubleshooting and support',
-      'Managed and specify desktop hardware configurations and procurement',
+      'Managed and specified desktop hardware configurations and procurement',
       'Developed desktop hardware specification, procurement and assignment process'
     ]
   }
@@ -147,7 +166,7 @@ const certifications = [
     category: 'Microsoft',
     items: [
       'AZ-104 | Microsoft Certified: Azure Administrator Associate',
-      'MCITP | Microsoft Certified IT Professional, Windows Server 2019'
+      'Microsoft Certified Server Administrator: Windows Server 2019'
     ]
   },
   {
@@ -167,6 +186,128 @@ const certifications = [
     items: [
       'VMware Certified Professional 5.5 (VCP)'
     ]
+  }
+];
+
+const technicalSkills = [
+  {
+    category: 'Cloud & Infrastructure',
+    items: [
+      'Microsoft Azure (M365, Azure Services)',
+      'Amazon Web Services (AWS)',
+      'Hybrid Cloud Architecture',
+      'VMware ESXI Virtualization',
+      'Windows Server (2008-2019)',
+      'Data Center Management'
+    ]
+  },
+  {
+    category: 'Identity & Security',
+    items: [
+      'Active Directory (AD)',
+      'Public Key Infrastructure (PKI)',
+      'Multi-Factor Authentication (MFA)',
+      'SAML & Federated Identity (ADFS)',
+      'DoD STIG Compliance',
+      '802.1x Network Authentication',
+      'HIPAA/PCI/DFARS Compliance'
+    ]
+  },
+  {
+    category: 'Messaging & Collaboration',
+    items: [
+      'Exchange Server (2003-2019)',
+      'Microsoft MECM/SCCM',
+      'SharePoint Server',
+      'Lync Server',
+      'Mobile Device Management (MDM)'
+    ]
+  },
+  {
+    category: 'Monitoring & Automation',
+    items: [
+      'SolarWinds',
+      'System Center Operations Manager (SCOM)',
+      'Generative AI for Engineering',
+      'PowerShell Automation',
+      'Infrastructure as Code'
+    ]
+  },
+  {
+    category: 'Networking & Storage',
+    items: [
+      'DNS, DHCP, TCP/IP',
+      'Cisco Unified Call Manager',
+      'CheckPoint Firewall',
+      'EMC Clarion / HP 3PAR / NetApp Storage',
+      'SMTP Mail Gateway'
+    ]
+  },
+  {
+    category: 'Data Protection',
+    items: [
+      'CommVault',
+      'Symantec Backup Exec',
+      'Symantec Enterprise Vault',
+      'Disaster Recovery Planning'
+    ]
+  }
+];
+
+const businessSkills = [
+  {
+    category: 'Leadership & Strategy',
+    items: [
+      'Technical Team Leadership (90+ person teams)',
+      'Strategic Technology Planning',
+      'Digital Transformation Strategy',
+      'Stakeholder Management',
+      'Government & Contractor Relations',
+      'Change Management Leadership',
+      'Talent Development & Mentorship'
+    ]
+  },
+  {
+    category: 'Project & Delivery',
+    items: [
+      'Technical Solution Roadmap Development',
+      'Requirements Gathering & Analysis',
+      'Migration Planning & Execution',
+      'Vendor Management',
+      'Budget & Resource Planning',
+      'Risk Management',
+      'Quality Assurance'
+    ]
+  },
+  {
+    category: 'Communication',
+    items: [
+      'Executive Briefings',
+      'Technical Documentation',
+      'Cross-functional Collaboration',
+      'Technical Mentoring',
+      'Solution Presentations',
+      'Status Reporting'
+    ]
+  }
+];
+
+const professionalGoals = [
+  {
+    title: 'Drive Enterprise AI Adoption',
+    description: 'Continue leveraging generative AI and machine learning to transform IT operations, accelerate solution development, and create innovative approaches to complex technical challenges.'
+  },
+  {
+    title: 'Strategic Technology Leadership',
+    description: 'Expand strategic influence in shaping technology roadmaps and driving digital transformation initiatives that align IT infrastructure with organizational mission and business objectives.'
+  },
+  {
+    title: 'Advance Cloud & Hybrid Solutions',
+    description: 'Lead the evolution of hybrid cloud architectures, particularly in secure government and enterprise environments, enabling seamless integration of on-premises and cloud-based services.'
+  },
+  {
+    title: 'Develop Technical Talent',
+    description: 'Build and mentor high-performing technical teams, fostering a culture of innovation, continuous learning, and technical excellence in enterprise IT solution delivery.'
   }
 ];
 
@@ -207,7 +348,7 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:greg.snow@example.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    const mailtoLink = `mailto:gregoryasnow@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
     window.location.href = mailtoLink;
   };
 
@@ -265,10 +406,10 @@ export default function App() {
                 Enterprise IT Solution Architect
               </Typography>
               <Typography variant="h5" gutterBottom sx={{ color: themeColors.text }}>
-                Enterprise IT Solution Architect | Microsoft Cloud & Server Expert
+                Strategic IT Leader | Microsoft Cloud & Enterprise Solutions Expert
               </Typography>
               <Typography variant="subtitle1" gutterBottom sx={{ color: themeColors.textSecondary, fontStyle: 'italic', mb: 2 }}>
-                Journey of a guy looking to solve the world's workplace challenges with technology and automation
+                20 Years of Experience Driving Digital Transformation and Delivering Business Value
               </Typography>
             </Box>
           </Box>
@@ -302,7 +443,9 @@ export default function App() {
           >
             <Tab icon={<Info />} label="Bio" />
             <Tab icon={<Star />} label="Key Accomplishments" />
+            <Tab icon={<Computer />} label="Skills" />
             <Tab icon={<Work />} label="Professional Experience" />
+            <Tab icon={<Architecture />} label="Professional Goals" />
             <Tab icon={<Code />} label="Thought Leadership" />
             <Tab icon={<Email />} label="Contact" />
             <Tab icon={<Build />} label="About This Site" />
@@ -329,13 +472,13 @@ export default function App() {
             <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
               <Cloud sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
               <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-                I help government agencies and enterprises modernize, secure, and optimize their IT infrastructure. With deep expertise in Microsoft Azure, Windows Server, and enterprise technology strategy, I deliver solutions that drive mission success and operational excellence.
+                Strategic IT leader with 20 years of experience architecting enterprise solutions and leading cross-functional teams in high-stakes environments. Proven success driving digital transformation, aligning technology with business goals, and delivering measurable business value across defense, healthcare, and legal sectors. Skilled in designing and transforming legacy systems into modern, resilient platforms with hybrid and cloud solutions.
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
               <Security sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
               <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-                Mission-driven technical leader and solution architect with expertise in IT infrastructure management, engineering, and operations. Proven track record across diverse industries, including creative, legal, healthcare, and defense, managing critical business and mission systems. Skilled in designing, building, and transforming systems into modern, resilient platforms in hybrid environments.
+                Currently serving as Technical Lead for Outside of the Continental United States (OCONUS) Navy Enterprise Networks, managing technical delivery for a 90+ person team. Deep expertise in Microsoft Azure, Windows Server, and enterprise technology strategy, with a focus on leveraging generative AI to expedite engineering solution development and delivery. Proven track record of aligning IT infrastructure with strategic objectives while mentoring and developing technical talent.
               </Typography>
             </Box>
             <Button
@@ -352,7 +495,7 @@ export default function App() {
                 }
               }}
               href="#contact"
-              onClick={() => setTab(4)}
+              onClick={() => setTab(6)}
             >
               Contact Me
             </Button>
@@ -391,6 +534,52 @@ export default function App() {
           </Paper>
         </TabPanel>
         <TabPanel value={tab} index={2}>
+          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text, mb: 3 }}>
+              <Computer sx={{ color: themeColors.primary }} />
+              Technical & Business Skills
+            </Typography>
+
+            <Typography variant="h5" gutterBottom sx={{ color: themeColors.primary, mt: 3, mb: 2 }}>Technical Skills</Typography>
+            <Grid container spacing={3}>
+              {technicalSkills.map((skill, idx) => (
+                <Grid item xs={12} md={6} key={idx}>
+                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text, height: '100%' }}>
+                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Build sx={{ fontSize: 20 }} />
+                      {skill.category}
+                    </Typography>
+                    {skill.items.map((item, idx) => (
+                      <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • {item}
+                      </Typography>
+                    ))}
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Typography variant="h5" gutterBottom sx={{ color: themeColors.primary, mt: 4, mb: 2 }}>Business & Leadership Skills</Typography>
+            <Grid container spacing={3}>
+              {businessSkills.map((skill, idx) => (
+                <Grid item xs={12} md={4} key={idx}>
+                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text, height: '100%' }}>
+                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Star sx={{ fontSize: 20 }} />
+                      {skill.category}
+                    </Typography>
+                    {skill.items.map((item, idx) => (
+                      <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
+                        • {item}
+                      </Typography>
+                    ))}
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Paper>
+        </TabPanel>
+        <TabPanel value={tab} index={3}>
           <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>Professional Experience</Typography>
             <Grid container spacing={3}>
@@ -436,7 +625,31 @@ export default function App() {
             </Grid>
           </Paper>
         </TabPanel>
-        <TabPanel value={tab} index={3}>
+        <TabPanel value={tab} index={4}>
+          <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
+            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text, mb: 3 }}>
+              <ArchitectureIcon sx={{ color: themeColors.primary }} />
+              Professional Goals
+            </Typography>
+
+            <Grid container spacing={3}>
+              {professionalGoals.map((goal, idx) => (
+                <Grid item xs={12} md={6} key={idx}>
+                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text, height: '100%' }}>
+                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Star sx={{ fontSize: 20 }} />
+                      {goal.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: themeColors.textSecondary, lineHeight: 1.6 }}>
+                      {goal.description}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Paper>
+        </TabPanel>
+        <TabPanel value={tab} index={5}>
           <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
               <Code sx={{ color: themeColors.primary }} />
@@ -612,7 +825,7 @@ export default function App() {
             </Box>
           </Paper>
         </TabPanel>
-        <TabPanel value={tab} index={4}>
+        <TabPanel value={tab} index={6}>
           <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>Contact</Typography>
             <Typography variant="body1" sx={{ color: themeColors.text, mb: 3 }}>
@@ -720,7 +933,7 @@ export default function App() {
             </form>
           </Paper>
         </TabPanel>
-        <TabPanel value={tab} index={5}>
+        <TabPanel value={tab} index={7}>
           <Paper elevation={2} sx={{ p: 4, background: themeColors.surface, borderRadius: 3 }}>
             <Typography variant="h4" gutterBottom>About This Site</Typography>
             <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>AI-Powered Development</Typography>
