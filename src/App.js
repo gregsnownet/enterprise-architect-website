@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Container, Typography, Button, Grid, Paper, Link, Tabs, Tab, TextField } from '@mui/material';
+import { Box, Container, Typography, Button, Grid, Paper, Link, Tabs, Tab, TextField, Chip, Avatar, IconButton, Fade, Grow } from '@mui/material';
 import {
   Cloud,
   Storage,
@@ -8,18 +8,21 @@ import {
   Architecture,
   Build,
   Computer,
-  Storage as StorageIcon,
-  Security as SecurityIcon,
-  CloudQueue,
-  Code as CodeIcon,
-  Architecture as ArchitectureIcon,
-  Build as BuildIcon,
-  Computer as ComputerIcon,
   Email,
   School,
   Work,
   Star,
-  Info
+  Info,
+  LinkedIn,
+  GitHub,
+  Download,
+  Timeline,
+  TrendingUp,
+  Shield,
+  CloudQueue,
+  Lightbulb,
+  Groups,
+  CheckCircle
 } from '@mui/icons-material';
 
 const accomplishments = [
@@ -28,7 +31,7 @@ const accomplishments = [
   'Drove digital transformation initiatives across defense, healthcare, and legal sectors',
   'Architected secure, scalable Microsoft Azure and hybrid cloud solutions for federal agencies',
   'Led enterprise IT modernization projects transforming legacy systems into resilient, modern platforms',
-  'Leveraged generative AI to expedite engineering solution development and delivery',
+  'Successfully leveraged generative AI tools (Claude, ChatGPT, and Copilot) to accelerate engineering solution development, documentation, and delivery',
   'Developed strategy and architecture enabling Navy M365/Azure services in OCONUS regions'
 ];
 
@@ -41,7 +44,7 @@ const experiences = [
     achievements: [
       'Serve as Booz Allen\'s IT functional lead for recruiting IT Systems Engineers and Architects',
       'Oversee engineering team delivery, managing technical solutions and government expectations',
-      'Leverage generative AI to expedite engineering solution development and delivery',
+      'Leverage generative AI tools (Claude, ChatGPT, Copilot) to expedite engineering solution development and delivery',
       'Develop strategy and architecture to enable Navy M365/Azure services in OCONUS regions',
       'Develop technical solution roadmaps in collaboration with government to support project scoping',
       'Deliver regular briefings on project status to key government and contractor stakeholders',
@@ -192,6 +195,7 @@ const certifications = [
 const technicalSkills = [
   {
     category: 'Cloud & Infrastructure',
+    icon: <CloudQueue />,
     items: [
       'Microsoft Azure (M365, Azure Services)',
       'Amazon Web Services (AWS)',
@@ -203,6 +207,7 @@ const technicalSkills = [
   },
   {
     category: 'Identity & Security',
+    icon: <Shield />,
     items: [
       'Active Directory (AD)',
       'Public Key Infrastructure (PKI)',
@@ -215,6 +220,7 @@ const technicalSkills = [
   },
   {
     category: 'Messaging & Collaboration',
+    icon: <Email />,
     items: [
       'Exchange Server (2003-2019)',
       'Microsoft MECM/SCCM',
@@ -225,6 +231,7 @@ const technicalSkills = [
   },
   {
     category: 'Monitoring & Automation',
+    icon: <TrendingUp />,
     items: [
       'SolarWinds',
       'System Center Operations Manager (SCOM)',
@@ -235,6 +242,7 @@ const technicalSkills = [
   },
   {
     category: 'Networking & Storage',
+    icon: <Storage />,
     items: [
       'DNS, DHCP, TCP/IP',
       'Cisco Unified Call Manager',
@@ -245,6 +253,7 @@ const technicalSkills = [
   },
   {
     category: 'Data Protection',
+    icon: <Security />,
     items: [
       'CommVault',
       'Symantec Backup Exec',
@@ -257,6 +266,7 @@ const technicalSkills = [
 const businessSkills = [
   {
     category: 'Leadership & Strategy',
+    icon: <Groups />,
     items: [
       'Technical Team Leadership (90+ person teams)',
       'Strategic Technology Planning',
@@ -269,6 +279,7 @@ const businessSkills = [
   },
   {
     category: 'Project & Delivery',
+    icon: <Timeline />,
     items: [
       'Technical Solution Roadmap Development',
       'Requirements Gathering & Analysis',
@@ -281,6 +292,7 @@ const businessSkills = [
   },
   {
     category: 'Communication',
+    icon: <Lightbulb />,
     items: [
       'Executive Briefings',
       'Technical Documentation',
@@ -295,40 +307,93 @@ const businessSkills = [
 const professionalGoals = [
   {
     title: 'Drive Enterprise AI Adoption',
+    icon: <Lightbulb />,
     description: 'Continue leveraging generative AI and machine learning to transform IT operations, accelerate solution development, and create innovative approaches to complex technical challenges.'
   },
   {
     title: 'Strategic Technology Leadership',
+    icon: <TrendingUp />,
     description: 'Expand strategic influence in shaping technology roadmaps and driving digital transformation initiatives that align IT infrastructure with organizational mission and business objectives.'
   },
   {
     title: 'Advance Cloud & Hybrid Solutions',
+    icon: <CloudQueue />,
     description: 'Lead the evolution of hybrid cloud architectures, particularly in secure government and enterprise environments, enabling seamless integration of on-premises and cloud-based services.'
   },
   {
     title: 'Develop Technical Talent',
+    icon: <Groups />,
     description: 'Build and mentor high-performing technical teams, fostering a culture of innovation, continuous learning, and technical excellence in enterprise IT solution delivery.'
   }
 ];
 
-// Define theme colors
-const themeColors = {
-  primary: '#2563eb', // Vibrant blue
-  primaryLight: '#60a5fa', // Light blue
-  primaryDark: '#1e40af', // Deep blue
-  background: '#f8fafc', // Light gray-blue background
-  surface: '#ffffff', // White surface
-  surfaceAlt: '#f1f5f9', // Alternate light surface
-  text: '#1e293b', // Dark slate text
-  textSecondary: '#64748b', // Medium slate text
-  border: '#e2e8f0' // Light border
+// Modern theme colors with gradient support
+const theme = {
+  // Primary gradient - deep blue to teal
+  gradientPrimary: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0d9488 100%)',
+  gradientAccent: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+  gradientCard: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%)',
+  gradientHero: 'linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%)',
+
+  // Core colors
+  primary: '#6366f1',        // Indigo
+  primaryLight: '#818cf8',
+  primaryDark: '#4f46e5',
+  secondary: '#0d9488',      // Teal
+  secondaryLight: '#14b8a6',
+  accent: '#8b5cf6',         // Purple
+
+  // Backgrounds
+  bgDark: '#0f172a',
+  bgMedium: '#1e293b',
+  bgLight: '#f8fafc',
+  bgCard: 'rgba(255,255,255,0.9)',
+
+  // Glass effect
+  glass: 'rgba(255,255,255,0.1)',
+  glassBorder: 'rgba(255,255,255,0.2)',
+  glassLight: 'rgba(255,255,255,0.95)',
+
+  // Text
+  textPrimary: '#0f172a',
+  textSecondary: '#475569',
+  textLight: '#f8fafc',
+  textMuted: '#94a3b8',
+
+  // Borders
+  border: '#e2e8f0',
+  borderLight: 'rgba(255,255,255,0.1)'
+};
+
+// Glassmorphism card style
+const glassCard = {
+  background: theme.glassLight,
+  backdropFilter: 'blur(20px)',
+  borderRadius: '24px',
+  border: `1px solid ${theme.border}`,
+  boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)',
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.08)'
+  }
+};
+
+// Accent card style
+const accentCard = {
+  background: `linear-gradient(135deg, ${theme.primary}15 0%, ${theme.secondary}15 100%)`,
+  borderRadius: '16px',
+  border: `1px solid ${theme.primary}30`,
+  transition: 'all 0.3s ease'
 };
 
 function TabPanel({ children, value, index }) {
   return (
-    <div hidden={value !== index} style={{ width: '100%' }}>
-      {value === index && <Box sx={{ pt: 3 }}>{children}</Box>}
-    </div>
+    <Fade in={value === index} timeout={400}>
+      <div hidden={value !== index} style={{ width: '100%' }}>
+        {value === index && <Box sx={{ pt: 3 }}>{children}</Box>}
+      </div>
+    </Fade>
   );
 }
 
@@ -357,145 +422,437 @@ export default function App() {
   return (
     <Box sx={{
       minHeight: '100vh',
-      background: themeColors.background,
-      backgroundImage: `
-        linear-gradient(135deg, ${themeColors.background} 0%, #e0f2fe 100%)
-      `,
-      color: themeColors.text,
-      position: 'relative'
+      background: theme.bgLight
     }}>
-      <Container maxWidth="xl" sx={{ pt: 6, position: 'relative', zIndex: 1 }}>
-        <Paper elevation={2} sx={{
-          p: 4,
-          mb: 4,
-          background: themeColors.surface,
-          borderRadius: 3,
-          border: `1px solid ${themeColors.border}`
-        }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, position: 'relative' }}>
-            <Architecture sx={{ fontSize: 40, color: themeColors.primary }} />
-            <Box>
-              <Typography variant="h3" component="h1" gutterBottom sx={{ color: themeColors.primary, fontWeight: 700 }}>
-                Enterprise IT Solution Architect
-              </Typography>
-              <Typography variant="h5" gutterBottom sx={{ color: themeColors.text }}>
-                Strategic IT Leader | Microsoft Cloud & Enterprise Solutions Expert
-              </Typography>
-              <Typography variant="subtitle1" gutterBottom sx={{ color: themeColors.textSecondary, fontStyle: 'italic', mb: 2 }}>
-                20 Years of Experience Driving Digital Transformation and Delivering Business Value
-              </Typography>
-            </Box>
+      {/* Hero Section */}
+      <Box sx={{
+        background: theme.gradientHero,
+        color: theme.textLight,
+        py: { xs: 6, md: 10 },
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(13, 148, 136, 0.15) 0%, transparent 50%)',
+          pointerEvents: 'none'
+        }
+      }}>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <Grid container spacing={4} alignItems="center">
+            <Grid item xs={12} md={8}>
+              <Grow in timeout={800}>
+                <Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                    <Avatar sx={{
+                      width: 80,
+                      height: 80,
+                      bgcolor: theme.primary,
+                      fontSize: '2rem',
+                      fontWeight: 700,
+                      border: `3px solid ${theme.glassBorder}`
+                    }}>
+                      GS
+                    </Avatar>
+                    <Box>
+                      <Typography variant="h2" component="h1" sx={{
+                        fontWeight: 800,
+                        fontSize: { xs: '2rem', md: '3rem' },
+                        background: `linear-gradient(135deg, ${theme.textLight} 0%, ${theme.primaryLight} 100%)`,
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        mb: 0.5
+                      }}>
+                        Gregory Snow
+                      </Typography>
+                      <Typography variant="h5" sx={{
+                        color: theme.secondaryLight,
+                        fontWeight: 500,
+                        fontSize: { xs: '1rem', md: '1.25rem' }
+                      }}>
+                        Solutions Architect | Enterprise IT Leader
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  <Typography variant="h6" sx={{
+                    color: theme.textMuted,
+                    fontWeight: 400,
+                    lineHeight: 1.7,
+                    maxWidth: 700,
+                    mb: 4
+                  }}>
+                    20+ years driving digital transformation across defense, healthcare, and enterprise sectors.
+                    Currently leading a 90+ person team delivering Navy Enterprise Network solutions.
+                  </Typography>
+
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mb: 4 }}>
+                    {['Azure', 'Windows Server', 'Active Directory', 'Hybrid Cloud', 'DoD/Navy', 'AI/Automation'].map((skill, idx) => (
+                      <Chip
+                        key={idx}
+                        label={skill}
+                        sx={{
+                          bgcolor: theme.glass,
+                          color: theme.textLight,
+                          border: `1px solid ${theme.glassBorder}`,
+                          fontWeight: 500,
+                          '&:hover': { bgcolor: theme.primary }
+                        }}
+                      />
+                    ))}
+                  </Box>
+
+                  <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      startIcon={<Email />}
+                      onClick={() => setTab(6)}
+                      sx={{
+                        background: theme.gradientAccent,
+                        color: '#fff',
+                        fontWeight: 600,
+                        px: 4,
+                        py: 1.5,
+                        borderRadius: '12px',
+                        textTransform: 'none',
+                        fontSize: '1rem',
+                        boxShadow: '0 4px 20px rgba(99, 102, 241, 0.4)',
+                        '&:hover': {
+                          background: theme.gradientAccent,
+                          boxShadow: '0 6px 30px rgba(99, 102, 241, 0.5)',
+                          transform: 'translateY(-2px)'
+                        }
+                      }}
+                    >
+                      Contact Me
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      startIcon={<Download />}
+                      href="/Gregory_Snow_Resume.pdf"
+                      download
+                      sx={{
+                        color: theme.textLight,
+                        borderColor: theme.glassBorder,
+                        fontWeight: 600,
+                        px: 4,
+                        py: 1.5,
+                        borderRadius: '12px',
+                        textTransform: 'none',
+                        fontSize: '1rem',
+                        '&:hover': {
+                          borderColor: theme.primaryLight,
+                          bgcolor: theme.glass
+                        }
+                      }}
+                    >
+                      Download Resume
+                    </Button>
+                  </Box>
+                </Box>
+              </Grow>
+            </Grid>
+
+            <Grid item xs={12} md={4} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+              <Box sx={{
+                width: 250,
+                height: 250,
+                borderRadius: '50%',
+                background: `linear-gradient(135deg, ${theme.primary}40 0%, ${theme.secondary}40 100%)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: `2px solid ${theme.glassBorder}`,
+                position: 'relative',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  inset: -10,
+                  borderRadius: '50%',
+                  border: `1px dashed ${theme.glassBorder}`,
+                  animation: 'spin 30s linear infinite'
+                }
+              }}>
+                <Architecture sx={{ fontSize: 100, color: theme.primaryLight, opacity: 0.8 }} />
+              </Box>
+            </Grid>
+          </Grid>
+
+          {/* Social Links */}
+          <Box sx={{ display: 'flex', gap: 2, mt: 4 }}>
+            <IconButton
+              href="https://www.linkedin.com/in/yourprofile"
+              target="_blank"
+              sx={{ color: theme.textMuted, '&:hover': { color: theme.primaryLight } }}
+            >
+              <LinkedIn />
+            </IconButton>
+            <IconButton
+              href="https://github.com/yourprofile"
+              target="_blank"
+              sx={{ color: theme.textMuted, '&:hover': { color: theme.primaryLight } }}
+            >
+              <GitHub />
+            </IconButton>
+            <IconButton
+              href="mailto:gregoryasnow@gmail.com"
+              sx={{ color: theme.textMuted, '&:hover': { color: theme.primaryLight } }}
+            >
+              <Email />
+            </IconButton>
           </Box>
-        </Paper>
-        <Box sx={{
-          borderBottom: 1,
-          borderColor: themeColors.border,
-          mb: 3,
-          background: themeColors.surface,
-          borderRadius: 2,
-          p: 1
+        </Container>
+      </Box>
+
+      {/* Navigation Tabs */}
+      <Container maxWidth="lg" sx={{ mt: -3, position: 'relative', zIndex: 10 }}>
+        <Paper sx={{
+          ...glassCard,
+          p: 1,
+          mb: 4
         }}>
           <Tabs
             value={tab}
             onChange={(_, v) => setTab(v)}
             textColor="inherit"
-            TabIndicatorProps={{ style: { background: themeColors.primary } }}
+            TabIndicatorProps={{
+              style: {
+                background: theme.gradientAccent,
+                height: 3,
+                borderRadius: 3
+              }
+            }}
             variant="scrollable"
             scrollButtons="auto"
             sx={{
-              '.MuiTab-root': { color: themeColors.textSecondary, fontWeight: 600, fontSize: '1em' },
-              '.Mui-selected': { color: `${themeColors.primary} !important`, bgcolor: themeColors.surfaceAlt }
+              '.MuiTab-root': {
+                color: theme.textSecondary,
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                textTransform: 'none',
+                minHeight: 56,
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  color: theme.primary
+                }
+              },
+              '.Mui-selected': {
+                color: `${theme.primary} !important`
+              }
             }}
           >
-            <Tab icon={<Info />} label="Bio" />
-            <Tab icon={<Star />} label="Key Accomplishments" />
-            <Tab icon={<Computer />} label="Skills" />
-            <Tab icon={<Work />} label="Professional Experience" />
-            <Tab icon={<Architecture />} label="Professional Goals" />
-            <Tab icon={<Code />} label="Thought Leadership" />
-            <Tab icon={<Email />} label="Contact" />
-            <Tab icon={<Build />} label="About This Site" />
+            <Tab icon={<Info sx={{ fontSize: 20 }} />} iconPosition="start" label="About" />
+            <Tab icon={<Star sx={{ fontSize: 20 }} />} iconPosition="start" label="Accomplishments" />
+            <Tab icon={<Computer sx={{ fontSize: 20 }} />} iconPosition="start" label="Skills" />
+            <Tab icon={<Work sx={{ fontSize: 20 }} />} iconPosition="start" label="Experience" />
+            <Tab icon={<Architecture sx={{ fontSize: 20 }} />} iconPosition="start" label="Goals" />
+            <Tab icon={<Lightbulb sx={{ fontSize: 20 }} />} iconPosition="start" label="Insights" />
+            <Tab icon={<Email sx={{ fontSize: 20 }} />} iconPosition="start" label="Contact" />
+            <Tab icon={<Code sx={{ fontSize: 20 }} />} iconPosition="start" label="About Site" />
           </Tabs>
-        </Box>
+        </Paper>
+
+        {/* Tab Panels */}
         <TabPanel value={tab} index={0}>
-          <Paper elevation={1} sx={{
-            p: 4,
-            background: themeColors.surface,
-            borderRadius: 3,
-            border: `1px solid ${themeColors.border}`
-          }}>
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
-              <Cloud sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
-              <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-                Strategic IT leader with 20 years of experience architecting enterprise solutions and leading cross-functional teams in high-stakes environments. Proven success driving digital transformation, aligning technology with business goals, and delivering measurable business value across defense, healthcare, and legal sectors. Skilled in designing and transforming legacy systems into modern, resilient platforms with hybrid and cloud solutions.
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Info sx={{ color: '#fff' }} />
+              </Box>
+              Professional Summary
+            </Typography>
+
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={6}>
+                <Box sx={{ ...accentCard, p: 3, height: '100%' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                    <Cloud sx={{ fontSize: 28, color: theme.primary, mt: 0.5 }} />
+                    <Typography variant="body1" sx={{ color: theme.textPrimary, lineHeight: 1.8, fontSize: '1.05rem' }}>
+                      Strategic IT leader with <strong>20 years of experience</strong> architecting enterprise solutions and leading cross-functional teams in high-stakes environments. Proven success driving digital transformation, aligning technology with business goals, and delivering measurable business value across <strong>defense, healthcare, and legal sectors</strong>.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Box sx={{ ...accentCard, p: 3, height: '100%' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                    <Security sx={{ fontSize: 28, color: theme.secondary, mt: 0.5 }} />
+                    <Typography variant="body1" sx={{ color: theme.textPrimary, lineHeight: 1.8, fontSize: '1.05rem' }}>
+                      Currently serving as <strong>Technical Lead for OCONUS Navy Enterprise Networks</strong>, managing technical delivery for a 90+ person team. Deep expertise in <strong>Microsoft Azure, Windows Server</strong>, and enterprise technology strategy, with a focus on leveraging <strong>generative AI</strong> to expedite engineering solution development.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+
+            <Box sx={{ mt: 4, p: 3, bgcolor: theme.bgLight, borderRadius: '16px', border: `1px solid ${theme.border}` }}>
+              <Typography variant="h6" sx={{ color: theme.primary, fontWeight: 600, mb: 2 }}>
+                Core Competencies
               </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                {['Enterprise Architecture', 'Cloud Solutions', 'Team Leadership', 'Digital Transformation', 'Security & Compliance', 'Government IT', 'Strategic Planning', 'AI Integration'].map((item, idx) => (
+                  <Chip
+                    key={idx}
+                    icon={<CheckCircle sx={{ fontSize: 16 }} />}
+                    label={item}
+                    sx={{
+                      bgcolor: '#fff',
+                      border: `1px solid ${theme.border}`,
+                      fontWeight: 500,
+                      '& .MuiChip-icon': { color: theme.secondary }
+                    }}
+                  />
+                ))}
+              </Box>
             </Box>
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, position: 'relative' }}>
-              <Security sx={{ fontSize: 24, color: themeColors.primary, mt: 0.5 }} />
-              <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-                Currently serving as Technical Lead for Outside of the Continental United States (OCONUS) Navy Enterprise Networks, managing technical delivery for a 90+ person team. Deep expertise in Microsoft Azure, Windows Server, and enterprise technology strategy, with a focus on leveraging generative AI to expedite engineering solution development and delivery. Proven track record of aligning IT infrastructure with strategic objectives while mentoring and developing technical talent.
-              </Typography>
-            </Box>
-            <Button
-              variant="contained"
-              size="large"
-              sx={{ 
-                background: themeColors.primary, 
-                color: '#fff', 
-                fontWeight: 600, 
-                mt: 2,
-                position: 'relative',
-                '&:hover': {
-                  background: themeColors.primaryDark
-                }
-              }}
-              href="#contact"
-              onClick={() => setTab(6)}
-            >
-              Contact Me
-            </Button>
           </Paper>
         </TabPanel>
+
         <TabPanel value={tab} index={1}>
-          <Paper elevation={1} sx={{
-            p: 4,
-            background: themeColors.surface,
-            borderRadius: 3,
-            border: `1px solid ${themeColors.border}`
-          }}>
-            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
-              <Star sx={{ color: themeColors.primary }} />
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Star sx={{ color: '#fff' }} />
+              </Box>
               Key Accomplishments
             </Typography>
-            {accomplishments.map((item, idx) => (
-              <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
-                <StorageIcon sx={{ fontSize: 20, color: themeColors.primary, mt: 0.5 }} />
-                <Typography variant="body1" sx={{ color: themeColors.text, lineHeight: 1.6 }}>
-                  {item}
-                </Typography>
-              </Box>
-            ))}
+
+            <Grid container spacing={3}>
+              {accomplishments.map((item, idx) => (
+                <Grid item xs={12} key={idx}>
+                  <Grow in timeout={300 + idx * 100}>
+                    <Box sx={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 3,
+                      p: 3,
+                      borderRadius: '16px',
+                      bgcolor: idx % 2 === 0 ? theme.bgLight : '#fff',
+                      border: `1px solid ${theme.border}`,
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        bgcolor: `${theme.primary}08`,
+                        borderColor: theme.primary
+                      }
+                    }}>
+                      <Box sx={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: '10px',
+                        background: theme.gradientAccent,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}>
+                        <Typography sx={{ color: '#fff', fontWeight: 700 }}>{idx + 1}</Typography>
+                      </Box>
+                      <Typography variant="body1" sx={{ color: theme.textPrimary, lineHeight: 1.7, fontSize: '1.05rem' }}>
+                        {item}
+                      </Typography>
+                    </Box>
+                  </Grow>
+                </Grid>
+              ))}
+            </Grid>
           </Paper>
         </TabPanel>
+
         <TabPanel value={tab} index={2}>
-          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
-            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text, mb: 3 }}>
-              <Computer sx={{ color: themeColors.primary }} />
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Computer sx={{ color: '#fff' }} />
+              </Box>
               Technical & Business Skills
             </Typography>
 
-            <Typography variant="h5" gutterBottom sx={{ color: themeColors.primary, mt: 3, mb: 2 }}>Technical Skills</Typography>
+            <Typography variant="h5" sx={{ color: theme.primary, fontWeight: 600, mb: 3, mt: 2 }}>
+              Technical Expertise
+            </Typography>
             <Grid container spacing={3}>
               {technicalSkills.map((skill, idx) => (
-                <Grid item xs={12} md={6} key={idx}>
-                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, height: '100%', border: `1px solid ${themeColors.border}` }}>
-                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Build sx={{ fontSize: 20 }} />
-                      {skill.category}
-                    </Typography>
-                    {skill.items.map((item, idx) => (
-                      <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • {item}
+                <Grid item xs={12} md={6} lg={4} key={idx}>
+                  <Paper elevation={0} sx={{
+                    p: 3,
+                    height: '100%',
+                    borderRadius: '16px',
+                    bgcolor: theme.bgLight,
+                    border: `1px solid ${theme.border}`,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      borderColor: theme.primary,
+                      bgcolor: `${theme.primary}05`
+                    }
+                  }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                      <Box sx={{
+                        p: 1,
+                        borderRadius: '10px',
+                        background: theme.gradientAccent,
+                        color: '#fff'
+                      }}>
+                        {skill.icon}
+                      </Box>
+                      <Typography variant="h6" sx={{ color: theme.textPrimary, fontWeight: 600 }}>
+                        {skill.category}
+                      </Typography>
+                    </Box>
+                    {skill.items.map((item, i) => (
+                      <Typography key={i} variant="body2" sx={{ color: theme.textSecondary, mb: 0.75, pl: 1, borderLeft: `2px solid ${theme.primary}30` }}>
+                        {item}
                       </Typography>
                     ))}
                   </Paper>
@@ -503,18 +860,40 @@ export default function App() {
               ))}
             </Grid>
 
-            <Typography variant="h5" gutterBottom sx={{ color: themeColors.primary, mt: 4, mb: 2 }}>Business & Leadership Skills</Typography>
+            <Typography variant="h5" sx={{ color: theme.secondary, fontWeight: 600, mb: 3, mt: 5 }}>
+              Business & Leadership Skills
+            </Typography>
             <Grid container spacing={3}>
               {businessSkills.map((skill, idx) => (
                 <Grid item xs={12} md={4} key={idx}>
-                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, height: '100%', border: `1px solid ${themeColors.border}` }}>
-                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Star sx={{ fontSize: 20 }} />
-                      {skill.category}
-                    </Typography>
-                    {skill.items.map((item, idx) => (
-                      <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • {item}
+                  <Paper elevation={0} sx={{
+                    p: 3,
+                    height: '100%',
+                    borderRadius: '16px',
+                    bgcolor: theme.bgLight,
+                    border: `1px solid ${theme.border}`,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      borderColor: theme.secondary,
+                      bgcolor: `${theme.secondary}05`
+                    }
+                  }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                      <Box sx={{
+                        p: 1,
+                        borderRadius: '10px',
+                        background: `linear-gradient(135deg, ${theme.secondary} 0%, ${theme.secondaryLight} 100%)`,
+                        color: '#fff'
+                      }}>
+                        {skill.icon}
+                      </Box>
+                      <Typography variant="h6" sx={{ color: theme.textPrimary, fontWeight: 600 }}>
+                        {skill.category}
+                      </Typography>
+                    </Box>
+                    {skill.items.map((item, i) => (
+                      <Typography key={i} variant="body2" sx={{ color: theme.textSecondary, mb: 0.75, pl: 1, borderLeft: `2px solid ${theme.secondary}30` }}>
+                        {item}
                       </Typography>
                     ))}
                   </Paper>
@@ -523,45 +902,154 @@ export default function App() {
             </Grid>
           </Paper>
         </TabPanel>
+
         <TabPanel value={tab} index={3}>
-          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
-            <Typography variant="h4" gutterBottom>Professional Experience</Typography>
-            <Grid container spacing={3}>
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Work sx={{ color: '#fff' }} />
+              </Box>
+              Professional Experience
+            </Typography>
+
+            {/* Timeline */}
+            <Box sx={{ position: 'relative' }}>
               {experiences.map((exp, idx) => (
-                <Grid item xs={12} key={idx}>
-                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, border: `1px solid ${themeColors.border}` }}>
-                    <Typography variant="h6" sx={{ color: themeColors.primary, fontWeight: 600 }}>{exp.title}</Typography>
-                    <Typography variant="subtitle1" sx={{ color: themeColors.textSecondary }}>{exp.company} | {exp.years}</Typography>
-                    <Typography variant="body2" sx={{ mt: 1, mb: exp.achievements ? 2 : 0 }}>{exp.description}</Typography>
+                <Box key={idx} sx={{
+                  display: 'flex',
+                  gap: 3,
+                  mb: 4,
+                  position: 'relative'
+                }}>
+                  {/* Timeline line */}
+                  <Box sx={{
+                    width: 3,
+                    bgcolor: idx === 0 ? theme.primary : theme.border,
+                    borderRadius: 2,
+                    position: 'relative',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 16,
+                      height: 16,
+                      borderRadius: '50%',
+                      bgcolor: idx === 0 ? theme.primary : theme.bgLight,
+                      border: `3px solid ${idx === 0 ? theme.primary : theme.border}`
+                    }
+                  }} />
+
+                  <Paper elevation={0} sx={{
+                    flex: 1,
+                    p: 3,
+                    borderRadius: '16px',
+                    bgcolor: idx === 0 ? `${theme.primary}08` : theme.bgLight,
+                    border: `1px solid ${idx === 0 ? theme.primary : theme.border}`,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      borderColor: theme.primary
+                    }
+                  }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+                      <Box>
+                        <Typography variant="h6" sx={{ color: theme.primary, fontWeight: 700 }}>
+                          {exp.title}
+                        </Typography>
+                        <Typography variant="subtitle1" sx={{ color: theme.textPrimary, fontWeight: 500 }}>
+                          {exp.company}
+                        </Typography>
+                      </Box>
+                      <Chip
+                        label={exp.years}
+                        size="small"
+                        sx={{
+                          bgcolor: idx === 0 ? theme.primary : theme.bgLight,
+                          color: idx === 0 ? '#fff' : theme.textSecondary,
+                          fontWeight: 600,
+                          border: `1px solid ${theme.border}`
+                        }}
+                      />
+                    </Box>
+                    <Typography variant="body2" sx={{ color: theme.textSecondary, mb: 2, lineHeight: 1.7 }}>
+                      {exp.description}
+                    </Typography>
                     {exp.achievements && (
                       <Box sx={{ mt: 2 }}>
-                        {exp.achievements.map((achievement, idx) => (
-                          <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, ml: 2, mb: 1 }}>
-                            • {achievement}
+                        {exp.achievements.map((achievement, i) => (
+                          <Typography key={i} variant="body2" sx={{
+                            color: theme.textSecondary,
+                            mb: 0.75,
+                            pl: 2,
+                            position: 'relative',
+                            '&::before': {
+                              content: '"•"',
+                              position: 'absolute',
+                              left: 0,
+                              color: theme.primary
+                            }
+                          }}>
+                            {achievement}
                           </Typography>
                         ))}
                       </Box>
                     )}
                   </Paper>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
-            <Typography variant="h4" sx={{ mt: 4, mb: 3 }}>Education</Typography>
-            <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-              <Typography variant="h6" sx={{ color: themeColors.primary, fontWeight: 600 }}>{education.school}</Typography>
-              <Typography variant="subtitle1" sx={{ color: themeColors.textSecondary }}>{education.degree} | {education.years}</Typography>
-              <Typography variant="body2" sx={{ mt: 1 }}>Major: {education.major}</Typography>
+            </Box>
+
+            {/* Education */}
+            <Typography variant="h5" sx={{ color: theme.primary, fontWeight: 600, mb: 3, mt: 5, display: 'flex', alignItems: 'center', gap: 1 }}>
+              <School /> Education
+            </Typography>
+            <Paper elevation={0} sx={{
+              p: 3,
+              borderRadius: '16px',
+              background: `linear-gradient(135deg, ${theme.primary}10 0%, ${theme.secondary}10 100%)`,
+              border: `1px solid ${theme.primary}30`
+            }}>
+              <Typography variant="h6" sx={{ color: theme.primary, fontWeight: 700 }}>{education.school}</Typography>
+              <Typography variant="subtitle1" sx={{ color: theme.textPrimary }}>{education.degree} | {education.years}</Typography>
+              <Typography variant="body2" sx={{ color: theme.textSecondary, mt: 1 }}>Major: {education.major}</Typography>
             </Paper>
-            <Typography variant="h4" sx={{ mt: 4, mb: 3 }}>Certifications</Typography>
+
+            {/* Certifications */}
+            <Typography variant="h5" sx={{ color: theme.secondary, fontWeight: 600, mb: 3, mt: 5, display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Star /> Certifications
+            </Typography>
             <Grid container spacing={3}>
               {certifications.map((cert, idx) => (
                 <Grid item xs={12} md={6} key={idx}>
-                  <Paper elevation={0} sx={{ p: 3, background: themeColors.surfaceAlt, color: themeColors.text, border: `1px solid ${themeColors.border}` }}>
-                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>{cert.category}</Typography>
-                    {cert.items.map((item, idx) => (
-                      <Typography key={idx} variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • {item}
-                      </Typography>
+                  <Paper elevation={0} sx={{
+                    p: 3,
+                    borderRadius: '16px',
+                    bgcolor: theme.bgLight,
+                    border: `1px solid ${theme.border}`,
+                    height: '100%'
+                  }}>
+                    <Typography variant="h6" sx={{ color: theme.secondary, fontWeight: 600, mb: 2 }}>{cert.category}</Typography>
+                    {cert.items.map((item, i) => (
+                      <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: theme.secondary }} />
+                        <Typography variant="body2" sx={{ color: theme.textSecondary }}>{item}</Typography>
+                      </Box>
                     ))}
                   </Paper>
                 </Grid>
@@ -569,396 +1057,481 @@ export default function App() {
             </Grid>
           </Paper>
         </TabPanel>
+
         <TabPanel value={tab} index={4}>
-          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
-            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text, mb: 3 }}>
-              <ArchitectureIcon sx={{ color: themeColors.primary }} />
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Architecture sx={{ color: '#fff' }} />
+              </Box>
               Professional Goals
             </Typography>
 
             <Grid container spacing={3}>
               {professionalGoals.map((goal, idx) => (
                 <Grid item xs={12} md={6} key={idx}>
-                  <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text, height: '100%' }}>
-                    <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Star sx={{ fontSize: 20 }} />
-                      {goal.title}
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: themeColors.textSecondary, lineHeight: 1.6 }}>
-                      {goal.description}
-                    </Typography>
-                  </Paper>
+                  <Grow in timeout={400 + idx * 150}>
+                    <Paper elevation={0} sx={{
+                      p: 4,
+                      height: '100%',
+                      borderRadius: '20px',
+                      background: `linear-gradient(145deg, #fff 0%, ${theme.bgLight} 100%)`,
+                      border: `1px solid ${theme.border}`,
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-4px)',
+                        boxShadow: '0 12px 40px rgba(0,0,0,0.1)',
+                        borderColor: theme.primary
+                      }
+                    }}>
+                      <Box sx={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: '14px',
+                        background: theme.gradientAccent,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 2,
+                        color: '#fff'
+                      }}>
+                        {goal.icon}
+                      </Box>
+                      <Typography variant="h6" sx={{ color: theme.textPrimary, fontWeight: 700, mb: 1 }}>
+                        {goal.title}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: theme.textSecondary, lineHeight: 1.7 }}>
+                        {goal.description}
+                      </Typography>
+                    </Paper>
+                  </Grow>
                 </Grid>
               ))}
             </Grid>
           </Paper>
         </TabPanel>
+
         <TabPanel value={tab} index={5}>
-          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
-            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, color: themeColors.text }}>
-              <Code sx={{ color: themeColors.primary }} />
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Lightbulb sx={{ color: '#fff' }} />
+              </Box>
               Thought Leadership
             </Typography>
-            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-              I regularly share insights on enterprise technology strategy, cloud adoption, and IT modernization. My approach blends technical depth with practical business outcomes, helping organizations navigate complex digital transformations.
+            <Typography variant="body1" sx={{ color: theme.textSecondary, mb: 4, lineHeight: 1.7, maxWidth: 800 }}>
+              I share insights on enterprise technology strategy, cloud adoption, and IT modernization. My approach blends technical depth with practical business outcomes.
             </Typography>
-            
+
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Paper elevation={0} sx={{ p: 3, borderRadius: '16px', bgcolor: theme.bgLight, border: `1px solid ${theme.border}`, height: '100%' }}>
+                  <Typography variant="h6" sx={{ color: theme.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
                     <Cloud sx={{ fontSize: 20 }} />
                     AI & Enterprise Technology
                   </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Generative AI's transformative impact on enterprise IT operations and decision-making processes
+                  {[
+                    'Generative AI\'s transformative impact on enterprise IT operations',
+                    'AI-powered cybersecurity: Automated threat detection in hybrid cloud',
+                    'Machine learning integration for legacy system modernization',
+                    'Responsible AI governance for government compliance',
+                    'AI-driven infrastructure automation and reliability',
+                    'Edge computing and AI for real-time decision making'
+                  ].map((item, idx) => (
+                    <Typography key={idx} variant="body2" sx={{ color: theme.textSecondary, mb: 1, pl: 2, borderLeft: `2px solid ${theme.primary}30` }}>
+                      {item}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • AI-powered cybersecurity: Automated threat detection and response in hybrid cloud environments
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Machine learning integration strategies for legacy system modernization and optimization
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Responsible AI governance frameworks for government and enterprise compliance
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • AI-driven infrastructure automation: Reducing operational overhead while improving reliability
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Edge computing and AI: Enabling real-time decision making in distributed environments
-                    </Typography>
-                  </Box>
+                  ))}
                 </Paper>
               </Grid>
-              
+
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Paper elevation={0} sx={{ p: 3, borderRadius: '16px', bgcolor: theme.bgLight, border: `1px solid ${theme.border}`, height: '100%' }}>
+                  <Typography variant="h6" sx={{ color: theme.secondary, mb: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
                     <Security sx={{ fontSize: 20 }} />
                     Cybersecurity & Geopolitics
                   </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Nation-state cyber threats and their impact on critical infrastructure security
+                  {[
+                    'Nation-state cyber threats and critical infrastructure security',
+                    'Supply chain security in global technology partnerships',
+                    'Zero Trust architecture for evolving threat landscapes',
+                    'International cybersecurity regulations impact',
+                    'Quantum computing threats to encryption standards',
+                    'Cyber warfare influence on enterprise security'
+                  ].map((item, idx) => (
+                    <Typography key={idx} variant="body2" sx={{ color: theme.textSecondary, mb: 1, pl: 2, borderLeft: `2px solid ${theme.secondary}30` }}>
+                      {item}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Supply chain security: Mitigating risks in global technology partnerships
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Zero Trust architecture adoption in response to evolving threat landscapes
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • International cybersecurity regulations and their enterprise implications
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Quantum computing threats to current encryption standards and mitigation strategies
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Cyber warfare and its influence on enterprise security postures
-                    </Typography>
-                  </Box>
+                  ))}
                 </Paper>
               </Grid>
-              
+
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Paper elevation={0} sx={{ p: 3, borderRadius: '16px', bgcolor: theme.bgLight, border: `1px solid ${theme.border}`, height: '100%' }}>
+                  <Typography variant="h6" sx={{ color: theme.accent, mb: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
                     <Architecture sx={{ fontSize: 20 }} />
                     Digital Transformation & Policy
                   </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Government digital transformation initiatives and their impact on private sector adoption
+                  {[
+                    'Government digital transformation and private sector adoption',
+                    'Data sovereignty regulations and cloud architecture',
+                    'Green IT and sustainable technology practices',
+                    'Digital divide: Bridging technology gaps',
+                    'Regulatory compliance in emerging technology',
+                    'Public-private partnerships in infrastructure modernization'
+                  ].map((item, idx) => (
+                    <Typography key={idx} variant="body2" sx={{ color: theme.textSecondary, mb: 1, pl: 2, borderLeft: `2px solid ${theme.accent}30` }}>
+                      {item}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Data sovereignty regulations and their influence on cloud architecture decisions
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Green IT initiatives: Sustainable technology practices in enterprise environments
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Digital divide: Bridging technology gaps in underserved communities and regions
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Regulatory compliance in emerging technology adoption (AI, IoT, blockchain)
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Public-private partnerships in critical infrastructure modernization
-                    </Typography>
-                  </Box>
+                  ))}
                 </Paper>
               </Grid>
-              
+
               <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Paper elevation={0} sx={{ p: 3, borderRadius: '16px', bgcolor: theme.bgLight, border: `1px solid ${theme.border}`, height: '100%' }}>
+                  <Typography variant="h6" sx={{ color: theme.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
                     <Storage sx={{ fontSize: 20 }} />
                     Cloud & Global Affairs
                   </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Multi-cloud strategies in response to geopolitical tensions and trade restrictions
+                  {[
+                    'Multi-cloud strategies amid geopolitical tensions',
+                    'Cloud repatriation: Cost, performance, and compliance',
+                    'Global data center expansion and architecture impact',
+                    'Technology sanctions and enterprise roadmaps',
+                    'Edge computing for latency and local regulations',
+                    'Hybrid cloud for multi-jurisdiction operations'
+                  ].map((item, idx) => (
+                    <Typography key={idx} variant="body2" sx={{ color: theme.textSecondary, mb: 1, pl: 2, borderLeft: `2px solid ${theme.primary}30` }}>
+                      {item}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Cloud repatriation trends: Balancing cost, performance, and regulatory requirements
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Global data center expansion and its impact on enterprise architecture decisions
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Technology sanctions and their effect on enterprise technology roadmaps
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Edge computing adoption driven by latency requirements and local regulations
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                      • Hybrid cloud strategies for organizations operating in multiple jurisdictions
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              
-              <Grid item xs={12}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Build sx={{ fontSize: 20 }} />
-                    Emerging Technology & Society
-                  </Typography>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Workforce transformation: Upskilling strategies for AI and automation adoption
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Digital ethics: Balancing innovation with societal responsibility in enterprise AI
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Technology accessibility: Ensuring inclusive design in enterprise solutions
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Remote work evolution: Permanent changes to enterprise IT infrastructure
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Smart cities and their implications for enterprise technology integration
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Digital currency adoption and its impact on enterprise financial systems
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Technology nationalism: Impact on global supply chains and vendor selection
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: themeColors.textSecondary, mb: 1 }}>
-                        • Climate tech: Enterprise solutions for environmental sustainability
-                      </Typography>
-                    </Grid>
-                  </Grid>
+                  ))}
                 </Paper>
               </Grid>
             </Grid>
-            
-            <Box sx={{ mt: 3, textAlign: 'center' }}>
-              <Typography variant="body2" sx={{ color: themeColors.primary }}>
-                <Link href="#" target="_blank" rel="noopener" sx={{ color: themeColors.primary }}>
-                  Connect with me on LinkedIn for deeper insights
-                </Link>
+
+            <Box sx={{ mt: 4, textAlign: 'center' }}>
+              <Button
+                variant="contained"
+                href="https://www.linkedin.com/in/yourprofile"
+                target="_blank"
+                startIcon={<LinkedIn />}
+                sx={{
+                  background: theme.gradientAccent,
+                  color: '#fff',
+                  fontWeight: 600,
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: '12px',
+                  textTransform: 'none',
+                  '&:hover': { boxShadow: '0 4px 20px rgba(99, 102, 241, 0.4)' }
+                }}
+              >
+                Connect on LinkedIn for More Insights
+              </Button>
+            </Box>
+          </Paper>
+        </TabPanel>
+
+        <TabPanel value={tab} index={6}>
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Email sx={{ color: '#fff' }} />
+              </Box>
+              Get In Touch
+            </Typography>
+            <Typography variant="body1" sx={{ color: theme.textSecondary, mb: 4, lineHeight: 1.7 }}>
+              Ready to modernize your IT infrastructure or collaborate on enterprise solutions? I'd love to hear from you.
+            </Typography>
+
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={7}>
+                <form onSubmit={handleSubmit}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        required
+                        label="Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleFormChange}
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: '12px',
+                            '& fieldset': { borderColor: theme.border },
+                            '&:hover fieldset': { borderColor: theme.primary },
+                            '&.Mui-focused fieldset': { borderColor: theme.primary }
+                          },
+                          '& .MuiInputLabel-root': { color: theme.textSecondary }
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        required
+                        type="email"
+                        label="Email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleFormChange}
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: '12px',
+                            '& fieldset': { borderColor: theme.border },
+                            '&:hover fieldset': { borderColor: theme.primary },
+                            '&.Mui-focused fieldset': { borderColor: theme.primary }
+                          },
+                          '& .MuiInputLabel-root': { color: theme.textSecondary }
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        required
+                        label="Subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleFormChange}
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: '12px',
+                            '& fieldset': { borderColor: theme.border },
+                            '&:hover fieldset': { borderColor: theme.primary },
+                            '&.Mui-focused fieldset': { borderColor: theme.primary }
+                          },
+                          '& .MuiInputLabel-root': { color: theme.textSecondary }
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        required
+                        multiline
+                        rows={5}
+                        label="Message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleFormChange}
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: '12px',
+                            '& fieldset': { borderColor: theme.border },
+                            '&:hover fieldset': { borderColor: theme.primary },
+                            '&.Mui-focused fieldset': { borderColor: theme.primary }
+                          },
+                          '& .MuiInputLabel-root': { color: theme.textSecondary }
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        sx={{
+                          background: theme.gradientAccent,
+                          color: '#fff',
+                          fontWeight: 600,
+                          py: 1.5,
+                          borderRadius: '12px',
+                          textTransform: 'none',
+                          fontSize: '1rem',
+                          '&:hover': {
+                            boxShadow: '0 4px 20px rgba(99, 102, 241, 0.4)'
+                          }
+                        }}
+                      >
+                        Send Message
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </form>
+              </Grid>
+
+              <Grid item xs={12} md={5}>
+                <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <Paper elevation={0} sx={{
+                    p: 3,
+                    borderRadius: '16px',
+                    bgcolor: theme.bgLight,
+                    border: `1px solid ${theme.border}`
+                  }}>
+                    <Typography variant="h6" sx={{ color: theme.textPrimary, fontWeight: 600, mb: 2 }}>
+                      Direct Contact
+                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                      <Email sx={{ color: theme.primary }} />
+                      <Link href="mailto:gregoryasnow@gmail.com" sx={{ color: theme.textSecondary, textDecoration: 'none', '&:hover': { color: theme.primary } }}>
+                        gregoryasnow@gmail.com
+                      </Link>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <LinkedIn sx={{ color: theme.primary }} />
+                      <Link href="https://www.linkedin.com/in/yourprofile" target="_blank" sx={{ color: theme.textSecondary, textDecoration: 'none', '&:hover': { color: theme.primary } }}>
+                        LinkedIn Profile
+                      </Link>
+                    </Box>
+                  </Paper>
+
+                  <Paper elevation={0} sx={{
+                    p: 3,
+                    borderRadius: '16px',
+                    background: `linear-gradient(135deg, ${theme.primary}10 0%, ${theme.secondary}10 100%)`,
+                    border: `1px solid ${theme.primary}30`,
+                    flex: 1
+                  }}>
+                    <Typography variant="h6" sx={{ color: theme.textPrimary, fontWeight: 600, mb: 2 }}>
+                      Let's Discuss
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: theme.textSecondary, lineHeight: 1.7 }}>
+                      Whether you're looking to modernize legacy systems, implement cloud solutions, or need strategic IT guidance, I'm here to help transform your technology landscape.
+                    </Typography>
+                  </Paper>
+                </Box>
+              </Grid>
+            </Grid>
+          </Paper>
+        </TabPanel>
+
+        <TabPanel value={tab} index={7}>
+          <Paper sx={{ ...glassCard, p: 5 }}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700,
+              color: theme.textPrimary,
+              mb: 4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}>
+              <Box sx={{
+                width: 48,
+                height: 48,
+                borderRadius: '12px',
+                background: theme.gradientAccent,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Code sx={{ color: '#fff' }} />
+              </Box>
+              About This Site
+            </Typography>
+
+            <Box sx={{ ...accentCard, p: 3, mb: 4 }}>
+              <Typography variant="h6" sx={{ color: theme.primary, mb: 2, fontWeight: 600 }}>
+                Built with Claude Code
+              </Typography>
+              <Typography variant="body1" sx={{ color: theme.textPrimary, lineHeight: 1.8, mb: 2 }}>
+                This website was built using <strong>Claude Code</strong>, Anthropic's AI-powered coding assistant. The entire codebase—design, layout, components, and functionality—was generated through collaborative AI development, demonstrating my hands-on experience leveraging generative AI to deliver production-ready IT solutions.
+              </Typography>
+              <Typography variant="body2" sx={{ color: theme.textSecondary, lineHeight: 1.7 }}>
+                As an enterprise IT leader, I actively use AI tools like Claude, ChatGPT, and GitHub Copilot to accelerate solution development, automate workflows, and drive innovation across my teams.
+              </Typography>
+            </Box>
+
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={6}>
+                <Paper elevation={0} sx={{ p: 3, borderRadius: '16px', bgcolor: theme.bgLight, border: `1px solid ${theme.border}`, height: '100%' }}>
+                  <Typography variant="h6" sx={{ color: theme.primary, mb: 2, fontWeight: 600 }}>
+                    Technology Stack
+                  </Typography>
+                  {['React 18.2.0', 'Material-UI (MUI) v5.14.0', 'Emotion for styled components', 'Modern CSS with Glassmorphism effects'].map((item, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                      <CheckCircle sx={{ fontSize: 16, color: theme.secondary }} />
+                      <Typography variant="body2" sx={{ color: theme.textSecondary }}>{item}</Typography>
+                    </Box>
+                  ))}
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Paper elevation={0} sx={{ p: 3, borderRadius: '16px', bgcolor: theme.bgLight, border: `1px solid ${theme.border}`, height: '100%' }}>
+                  <Typography variant="h6" sx={{ color: theme.primary, mb: 2, fontWeight: 600 }}>
+                    Design Features
+                  </Typography>
+                  {['Responsive design for all devices', 'Modern light theme with gradients', 'Smooth animations and transitions', 'Accessibility-focused components'].map((item, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                      <CheckCircle sx={{ fontSize: 16, color: theme.secondary }} />
+                      <Typography variant="body2" sx={{ color: theme.textSecondary }}>{item}</Typography>
+                    </Box>
+                  ))}
+                </Paper>
+              </Grid>
+            </Grid>
+
+            <Box sx={{ mt: 4, p: 3, bgcolor: theme.bgLight, borderRadius: '16px', border: `1px solid ${theme.border}` }}>
+              <Typography variant="h6" sx={{ color: theme.secondary, mb: 2, fontWeight: 600 }}>
+                Development Philosophy
+              </Typography>
+              <Typography variant="body1" sx={{ color: theme.textSecondary, lineHeight: 1.8 }}>
+                Built using Create React App and Material-UI, this site showcases how AI can assist in creating professional, production-ready web applications. The AI-driven development process ensured consistent code quality, modern best practices, and optimal user experience while maintaining the personal touch that represents my professional brand.
+              </Typography>
+            </Box>
+
+            <Box sx={{ mt: 4, p: 3, background: theme.gradientHero, borderRadius: '16px', textAlign: 'center' }}>
+              <Typography variant="body2" sx={{ color: theme.textLight, opacity: 0.9 }}>
+                Proudly built with <Link href="https://claude.ai/code" target="_blank" sx={{ color: theme.primaryLight, fontWeight: 600 }}>Claude Code</Link> by Anthropic
               </Typography>
             </Box>
           </Paper>
         </TabPanel>
-        <TabPanel value={tab} index={6}>
-          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
-            <Typography variant="h4" gutterBottom>Contact</Typography>
-            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3 }}>
-              Ready to modernize your IT or collaborate on enterprise solutions? Let's connect!
-            </Typography>
-            <form onSubmit={handleSubmit}>
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    required
-                    label="Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleFormChange}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.border },
-                        '&:hover fieldset': { borderColor: themeColors.primary },
-                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
-                      },
-                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text },
-                      bgcolor: themeColors.surface
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    required
-                    type="email"
-                    label="Email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleFormChange}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.border },
-                        '&:hover fieldset': { borderColor: themeColors.primary },
-                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
-                      },
-                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text },
-                      bgcolor: themeColors.surface
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    required
-                    label="Subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleFormChange}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.border },
-                        '&:hover fieldset': { borderColor: themeColors.primary },
-                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
-                      },
-                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text },
-                      bgcolor: themeColors.surface
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    required
-                    multiline
-                    rows={4}
-                    label="Message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleFormChange}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: themeColors.border },
-                        '&:hover fieldset': { borderColor: themeColors.primary },
-                        '&.Mui-focused fieldset': { borderColor: themeColors.primary }
-                      },
-                      '& .MuiInputLabel-root': { color: themeColors.textSecondary },
-                      '& .MuiInputBase-input': { color: themeColors.text },
-                      bgcolor: themeColors.surface
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    sx={{
-                      background: themeColors.primary,
-                      color: '#fff',
-                      fontWeight: 600,
-                      '&:hover': {
-                        background: themeColors.primaryDark
-                      }
-                    }}
-                  >
-                    Send Message
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          </Paper>
-        </TabPanel>
-        <TabPanel value={tab} index={7}>
-          <Paper elevation={1} sx={{ p: 4, background: themeColors.surface, borderRadius: 3, border: `1px solid ${themeColors.border}` }}>
-            <Typography variant="h4" gutterBottom>About This Site</Typography>
-            <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>AI-Powered Development</Typography>
-            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-              This website was built using AI-assisted development, demonstrating the power of artificial intelligence in modern web development. The entire codebase, including the design, layout, and functionality, was generated and refined through AI collaboration.
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Frontend Framework</Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • React 18.2.0
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Material-UI (MUI) v5.14.0
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text }}>
-                    • Emotion for styled components
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Key Features</Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Responsive design with Material-UI Grid
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Dark theme optimized for readability
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text }}>
-                    • Client-side email form integration
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-            <Typography variant="h6" sx={{ color: themeColors.primary, mt: 4, mb: 2 }}>AI Development Process</Typography>
-            <Typography variant="body1" sx={{ color: themeColors.text, mb: 3, lineHeight: 1.6 }}>
-              The development process leveraged AI to:
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Code Generation</Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Component structure and implementation
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Styling and theme configuration
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text }}>
-                    • Form handling and validation
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, background: themeColors.surface, color: themeColors.text }}>
-                  <Typography variant="h6" sx={{ color: themeColors.primary, mb: 2 }}>Design Decisions</Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Layout and component organization
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text, mb: 1 }}>
-                    • Color scheme and typography
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: themeColors.text }}>
-                    • User experience optimization
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-            <Typography variant="h6" sx={{ color: themeColors.primary, mt: 4, mb: 2 }}>Development</Typography>
-            <Typography variant="body1" sx={{ color: themeColors.text, lineHeight: 1.6 }}>
-              Built using Create React App and Material-UI, this site showcases how AI can assist in creating professional, production-ready web applications. The AI-driven development process ensured consistent code quality, modern best practices, and optimal user experience.
-            </Typography>
-          </Paper>
-        </TabPanel>
+
+        {/* Footer */}
+        <Box sx={{ textAlign: 'center', py: 4, mt: 4 }}>
+          <Typography variant="body2" sx={{ color: theme.textMuted }}>
+            © {new Date().getFullYear()} Gregory Snow. All rights reserved.
+          </Typography>
+        </Box>
       </Container>
     </Box>
   );
-} 
+}
