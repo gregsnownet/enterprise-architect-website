@@ -1,8 +1,8 @@
 {
   "name": "enterprise-architect-website",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "homepage": "/",
   "private": true,
-  "homepage": "https://gregsnownet.github.io/enterprise-architect-website",
   "description": "Professional website for an Enterprise IT Solution Architect specializing in Microsoft Enterprise Cloud and Server Solutions.",
   "scripts": {
     "start": "react-scripts start",
