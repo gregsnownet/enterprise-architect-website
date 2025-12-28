@@ -605,7 +605,7 @@ export default function App() {
           {/* Social Links */}
           <Box sx={{ display: 'flex', gap: 2, mt: 4 }}>
             <IconButton
-              href="https://www.linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/grsnow/"
               target="_blank"
               sx={{ color: theme.textMuted, '&:hover': { color: theme.primaryLight } }}
             >
@@ -1259,7 +1259,7 @@ export default function App() {
             <Box sx={{ mt: 4, textAlign: 'center' }}>
               <Button
                 variant="contained"
-                href="https://www.linkedin.com/in/yourprofile"
+                href="https://www.linkedin.com/in/grsnow/"
                 target="_blank"
                 startIcon={<LinkedIn />}
                 sx={{
@@ -1434,7 +1434,7 @@ export default function App() {
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                       <LinkedIn sx={{ color: theme.primary }} />
-                      <Link href="https://www.linkedin.com/in/yourprofile" target="_blank" sx={{ color: theme.textSecondary, textDecoration: 'none', '&:hover': { color: theme.primary } }}>
+                      <Link href="https://www.linkedin.com/in/grsnow/" target="_blank" sx={{ color: theme.textSecondary, textDecoration: 'none', '&:hover': { color: theme.primary } }}>
                         LinkedIn Profile
                       </Link>
                     </Box>
