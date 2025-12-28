@@ -491,16 +491,33 @@ export default function App() {
                     Currently leading a 90+ person team delivering Navy Enterprise Network solutions.
                   </Typography>
 
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mb: 4 }}>
-                    {['Azure', 'Windows Server', 'Active Directory', 'Hybrid Cloud', 'DoD/Navy', 'AI/Automation'].map((skill, idx) => (
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 4 }}>
+                    {[
+                      // Cloud & Infrastructure
+                      'Microsoft Azure', 'AWS', 'Hybrid Cloud', 'VMware', 'Windows Server', 'Data Center',
+                      // Identity & Security
+                      'Active Directory', 'PKI', 'MFA', 'ADFS/SAML', 'DoD STIG', '802.1x', 'HIPAA/PCI/DFARS',
+                      // Messaging & Collaboration
+                      'Exchange Server', 'MECM/SCCM', 'SharePoint', 'MDM',
+                      // Monitoring & Automation
+                      'SolarWinds', 'SCOM', 'Generative AI', 'PowerShell', 'IaC',
+                      // Networking & Storage
+                      'DNS/DHCP/TCP-IP', 'Cisco UCM', 'CheckPoint', 'NetApp/3PAR',
+                      // Data Protection
+                      'CommVault', 'Disaster Recovery',
+                      // Leadership
+                      'Team Leadership', 'Digital Transformation', 'DoD/Navy'
+                    ].map((skill, idx) => (
                       <Chip
                         key={idx}
                         label={skill}
+                        size="small"
                         sx={{
                           bgcolor: theme.glass,
                           color: theme.textLight,
                           border: `1px solid ${theme.glassBorder}`,
                           fontWeight: 500,
+                          fontSize: '0.75rem',
                           '&:hover': { bgcolor: theme.primary }
                         }}
                       />
