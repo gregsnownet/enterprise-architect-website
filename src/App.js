@@ -14,7 +14,6 @@ import {
   Star,
   Info,
   LinkedIn,
-  GitHub,
   Download,
   Timeline,
   TrendingUp,
@@ -611,14 +610,7 @@ export default function App() {
             >
               <LinkedIn />
             </IconButton>
-            <IconButton
-              href="https://github.com/yourprofile"
-              target="_blank"
-              sx={{ color: theme.textMuted, '&:hover': { color: theme.primaryLight } }}
-            >
-              <GitHub />
-            </IconButton>
-            <IconButton
+                        <IconButton
               href="mailto:gregoryasnow@gmail.com"
               sx={{ color: theme.textMuted, '&:hover': { color: theme.primaryLight } }}
             >
